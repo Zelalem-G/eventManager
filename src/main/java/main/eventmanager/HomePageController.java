@@ -23,6 +23,6 @@ public class HomePageController {
     private Label welcomeLabel;
 
     public void setUserInformation(String username, String role) {
-        welcomeLabel.setText("Welcome " + username + "! Your role is: " + role);
+        welcomeLabel.setText("Welcome " + username + "! Role: " + role);
     }
 }

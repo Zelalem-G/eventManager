@@ -7,6 +7,7 @@ import javafx.scene.Node;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.scene.control.Label;
+import javafx.scene.control.TextField;
 import javafx.stage.Stage;
 
 import java.io.IOException;
@@ -18,6 +19,10 @@ public class LoginController {
     private Stage stage;
     @FXML
     private Label errorMessageLabel;
+    @FXML
+    private TextField passwordTextfield;
+    @FXML
+    private TextField usernameTextfield;
 
     public void onSignup(ActionEvent event) throws IOException {
         root = FXMLLoader.load(Objects.requireNonNull(getClass().getResource("signup.fxml")));
@@ -29,8 +34,27 @@ public class LoginController {
 
     }
 
+    @FXML
     public void onLogin(ActionEvent event) throws IOException {
-        errorMessageLabel.setText("Login button clicked");
+        // Assuming you have TextFields for username and password with fx:id set in FXML
+//        String username = ((javafx.scene.control.TextField) ((Node) event.getSource()).getScene().lookup("#usernameField")).getText();
+//        String password = ((javafx.scene.control.PasswordField) ((Node) event.getSource()).getScene().lookup("#passwordField")).getText();
+          String username = usernameTextfield.getText();
+          String password = passwordTextfield.getText();
+
+        if (username.isEmpty() || password.isEmpty()) {
+            errorMessageLabel.setText("Please fill in all fields.");
+            return;
+        }
+
+        boolean isAuthenticated = AuthService.authenticate(username, password);
+
+        if (isAuthenticated) {
+            String role = Session.getRole(); // Session already set in AuthService
+            SceneController.changeScene(event, "homePage.fxml", "Home", username, role);
+        } else {
+            errorMessageLabel.setText("Invalid username or password.");
+        }
     }
 
 }

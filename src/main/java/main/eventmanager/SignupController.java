@@ -7,6 +7,8 @@ import javafx.scene.Node;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.scene.control.Label;
+import javafx.scene.control.RadioButton;
+import javafx.scene.control.TextField;
 import javafx.stage.Stage;
 
 import java.io.IOException;
@@ -18,6 +20,52 @@ public class SignupController {
     private Stage stage;
     @FXML
     private Label errorMessageLabel;
+
+    @FXML
+    private TextField passwordTextfield;
+    @FXML
+    private TextField usernameTextfield;
+    @FXML
+    private TextField emailTextfield;
+    @FXML
+    private TextField fullNameTextfield;
+    @FXML
+    private RadioButton userRadioBtn;
+    @FXML
+    private RadioButton adminRadioBtn;
+
+    public String selectedRole() {
+        String selectedRole = "";
+        if (adminRadioBtn.isSelected()) {
+            selectedRole = "admin";
+        } else if (userRadioBtn.isSelected()) {
+            selectedRole = "user";
+        }
+        return selectedRole;
+    }
+
+    public void onSignup(ActionEvent event) throws IOException {
+        String username = usernameTextfield.getText().trim();
+        String password = passwordTextfield.getText().trim();
+        String email = emailTextfield.getText().trim();
+        String fullName = fullNameTextfield.getText().trim();
+        String role = selectedRole();
+
+        if (username.isEmpty() || password.isEmpty() || email.isEmpty() || fullName.isEmpty() || role == null) {
+            errorMessageLabel.setText("Please fill in all fields.");
+            return;
+        }
+
+        boolean registered = AuthService.registerUser(username, password,email , fullName, role);
+
+        if(registered){
+            Session.setSession(username , role);
+
+            SceneController.changeScene(event, "homePage.fxml", "Home", username, role);
+        }else {
+            errorMessageLabel.setText("Username already taken. Please choose another one.");
+        }
+    }
 
     public void onLogin(ActionEvent event) throws IOException {
 //        errorMessageLabel.setText("Login button clicked");
