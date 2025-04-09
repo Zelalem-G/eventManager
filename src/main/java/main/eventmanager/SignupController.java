@@ -56,15 +56,23 @@ public class SignupController {
             return;
         }
 
-        boolean registered = AuthService.registerUser(username, password,email , fullName, role);
+        AuthService.SignupResult result = AuthService.registerUser(username, password, email , fullName, role);
 
-        if(registered){
-            Session.setSession(username , role);
+        switch (result) {
+            case SUCCESS:
+                Session.setSession(username , role);
+                SceneController.changeScene(event, "homePage.fxml", "Home", username, role);
+                return;
 
-            SceneController.changeScene(event, "homePage.fxml", "Home", username, role);
-        }else {
-            errorMessageLabel.setText("Username already taken. Please choose another one.");
+            case USERNAME_TAKEN:
+                errorMessageLabel.setText("Username already taken. Try another.");
+                break;
+
+            case ERROR:
+                errorMessageLabel.setText("Something went wrong. Please try again later.");
+                break;
         }
+
     }
 
     public void onLogin(ActionEvent event) throws IOException {

@@ -13,6 +13,7 @@ import java.io.IOException;
 import java.util.Objects;
 
 public class HomePageController {
+
 //    @FXML
 //    private Label welcomUser;
 //    public void setUserInformation(String userName){
@@ -23,6 +24,7 @@ public class HomePageController {
     private Label welcomeLabel;
 
     public void setUserInformation(String username, String role) {
+        System.out.println("Setting user info for: " + username + " as " + role);
         welcomeLabel.setText("Welcome " + username + "! Role: " + role);
     }
 }

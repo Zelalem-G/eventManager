@@ -47,14 +47,26 @@ public class LoginController {
             return;
         }
 
-        boolean isAuthenticated = AuthService.authenticate(username, password);
+        AuthService.LoginResult result = AuthService.authenticate(username, password);
 
-        if (isAuthenticated) {
-            String role = Session.getRole(); // Session already set in AuthService
-            SceneController.changeScene(event, "homePage.fxml", "Home", username, role);
-        } else {
-            errorMessageLabel.setText("Invalid username or password.");
+        switch (result) {
+            case SUCCESS:
+                SceneController.changeScene(event, "homePage.fxml", "Home", Session.getUsername(), Session.getRole());
+                break;
+
+            case USER_NOT_FOUND:
+                errorMessageLabel.setText("Username not found.");
+                break;
+
+            case WRONG_PASSWORD:
+                errorMessageLabel.setText("Incorrect password.");
+                break;
+
+            case ERROR:
+                errorMessageLabel.setText("An error occurred. Please try again.");
+                break;
         }
+
     }
 
 }

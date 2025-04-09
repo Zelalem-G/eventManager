@@ -50,7 +50,7 @@
                </font>
             </Label>
             <PasswordField fx:id="passwordTextfield" layoutX="96.0" layoutY="177.0" prefHeight="25.0" prefWidth="183.0" promptText="Password" style="-fx-background-color: E6ECF0;" />
-            <Label fx:id="errorMessageLabel" alignment="CENTER" layoutX="-1.0" layoutY="234.0" prefHeight="17.0" prefWidth="300.0" text="Login faild. Try agian" textFill="RED">
+            <Label fx:id="errorMessageLabel" alignment="CENTER" layoutX="-1.0" layoutY="234.0" prefHeight="17.0" prefWidth="300.0" textFill="RED">
                <font>
                   <Font name="SansSerif Regular" size="13.0" />
                </font>
