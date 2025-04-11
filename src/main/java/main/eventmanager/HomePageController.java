@@ -1,5 +1,7 @@
 package main.eventmanager;
 
+import javafx.beans.property.BooleanProperty;
+import javafx.beans.property.SimpleBooleanProperty;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
@@ -14,17 +16,16 @@ import java.util.Objects;
 
 public class HomePageController {
 
-//    @FXML
-//    private Label welcomUser;
-//    public void setUserInformation(String userName){
-//        welcomUser.setText("Hello, "+ userName);
-//    }
-
     @FXML
     private Label welcomeLabel;
 
     public void setUserInformation(String username, String role) {
-        System.out.println("Setting user info for: " + username + " as " + role);
-        welcomeLabel.setText("Welcome " + username + "! Role: " + role);
+        welcomeLabel.setText("Welcome back,  " + username + "!");
     }
+    public void onRegisterEvents(ActionEvent event){
+//        System.out.println("Setting user info for: ................................................." );
+        SceneController.changeScene(event,"addEventForm.fxml","Add event", Session.getUsername(),Session.getRole());
+    }
+
+
 }

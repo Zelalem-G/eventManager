@@ -19,9 +19,13 @@ public class SceneController {
             FXMLLoader loader = new FXMLLoader(SceneController.class.getResource(fxmlFile));
             Parent root = loader.load(); // this loads the scene AND wires up the controller
 
-            HomePageController controller = loader.getController();
+            Object controller = loader.getController();
+            if (controller instanceof HomePageController) {
+                ((HomePageController) controller).setUserInformation(username, role);
+            }
 
-            controller.setUserInformation(username, role);
+//            HomePageController controller = loader.getController();
+//            controller.setUserInformation(username, role);
 
             Stage stage = (Stage) ((Node) event.getSource()).getScene().getWindow();
             Scene scene = new Scene(root);
