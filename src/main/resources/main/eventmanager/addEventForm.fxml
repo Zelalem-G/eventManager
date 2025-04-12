@@ -4,12 +4,11 @@
 <?import javafx.scene.control.DatePicker?>
 <?import javafx.scene.control.Label?>
 <?import javafx.scene.control.TextArea?>
+<?import javafx.scene.control.TextField?>
 <?import javafx.scene.layout.AnchorPane?>
 <?import javafx.scene.shape.Line?>
 <?import javafx.scene.text.Font?>
 
-
-<?import javafx.scene.control.TextField?>
 <AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="400.0" prefWidth="600.0" style="-fx-background-color: #21618c;" xmlns="http://javafx.com/javafx/23.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="main.eventmanager.AddEventFormController">
    <children>
       <AnchorPane layoutX="8.0" layoutY="42.0" prefHeight="32.0" prefWidth="584.0" style="-fx-background-color: #ffffff;">
@@ -94,7 +93,7 @@
                   <Font name="Segoe UI Semibold" size="18.0" />
                </font>
             </Button>
-            <Label fx:id="registerResultLabel" layoutX="119.0" layoutY="264.0" prefHeight="35.0" prefWidth="316.0" text="Event Succsesfully registerd" textFill="#05e968">
+            <Label fx:id="registerResultLabel" alignment="CENTER" layoutX="11.0" layoutY="264.0" prefHeight="35.0" prefWidth="565.0" textFill="#05e968">
                <font>
                   <Font name="Segoe UI Semibold" size="24.0" />
                </font>

@@ -79,7 +79,11 @@ public class AuthService {
             String role = rs.getString("role");
 
             Session.setSession(username, role);
-            return LoginResult.SUCCESS;
+//            (setUserIDToSession(username)) ? return LoginResult.SUCCESS : return LoginResult.ERROR;
+            if(setUserIDToSession(username)){
+                return LoginResult.SUCCESS;
+            }
+            return LoginResult.ERROR;
 
         } catch (SQLException e) {
             System.out.println("Login SQL Error: " + e.getMessage());
@@ -110,6 +114,30 @@ public class AuthService {
         return -1;
     }
 
+    public static boolean setUserIDToSession(String username) {
+        // SELECT role FROM DB
+        String query = "SELECT user_id FROM users WHERE username = ?";
+
+        try (Connection conn = DBUtils.getConnection();
+             PreparedStatement stmt = conn.prepareStatement(query)) {
+
+            stmt.setString(1, username);
+            ResultSet rs = stmt.executeQuery();
+
+            if (rs.next()) {
+                int id = rs.getInt("user_id");
+                Session.setSessionId(id);
+                System.out.println("User ID set to session: " + Session.getUserId());
+                return true;
+            }
+
+        } catch (SQLException e) {
+            System.out.println(e.getMessage());
+            e.printStackTrace();
+        }
+        return false;
+    }
+
     public static String getUserRole(String username) {
         // SELECT role FROM DB
         String query = "SELECT role FROM users WHERE username = ?";
@@ -122,28 +150,6 @@ public class AuthService {
 
             if (rs.next()) {
                 return rs.getString("role");
-            }
-
-        } catch (SQLException e) {
-            System.out.println(e.getMessage());
-            e.printStackTrace();
-        }
-
-        return null;
-    }
-
-    public static String getUserID(String username) {
-        // SELECT role FROM DB
-        String query = "SELECT user_id FROM users WHERE username = ?";
-
-        try (Connection conn = DBUtils.getConnection();
-             PreparedStatement stmt = conn.prepareStatement(query)) {
-
-            stmt.setString(1, username);
-            ResultSet rs = stmt.executeQuery();
-
-            if (rs.next()) {
-                return rs.getString("user_id");
             }
 
         } catch (SQLException e) {

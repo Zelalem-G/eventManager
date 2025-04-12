@@ -43,6 +43,7 @@ public class AddEventFormController {
             registerResultLabel.setText("Please fill in all fields.");
             return;
         }
+        System.out.println("on register " + adminId);
 
         String insertQuery = "INSERT INTO events (event_name, description, location, event_date, image_path, created_by) VALUES (?, ?, ?, ?, ?, ?)";
 
@@ -61,9 +62,9 @@ public class AddEventFormController {
                 insertStmt.setString(1, eventName);
                 insertStmt.setString(2, description);
                 insertStmt.setString(3, location);
-                insertStmt.setString(4, String.valueOf(sqlDate));
+                insertStmt.setDate(4, sqlDate);
                 insertStmt.setString(5, imagePath);
-                insertStmt.setString(6, String.valueOf(adminId));
+                insertStmt.setInt(6, adminId);
 
                 int rowsInserted = insertStmt.executeUpdate();
 
@@ -90,13 +91,17 @@ public class AddEventFormController {
     public boolean isEventAlreadyRegistered(Connection conn, String eventName, java.sql.Date eventDate, int adminId) throws SQLException {
         String sql = "SELECT * FROM events WHERE event_name = ? AND event_date = ? AND created_by = ?";
 
+        System.out.println("is already registered: " + adminId);
+
         try (PreparedStatement stmt = conn.prepareStatement(sql)) {
             stmt.setString(1, eventName);
             stmt.setDate(2,eventDate);
             stmt.setInt(3, adminId);
 
-            ResultSet rs = stmt.executeQuery();
-            return rs.next(); // if there's a row, the event is already registered by this admin
+            try (ResultSet rs = stmt.executeQuery()) {
+                return rs.next(); // If there's a row, the event is already registered by this admin
+            }
+
         }catch (SQLException e) {
             System.out.println(e.getMessage());
             e.printStackTrace();

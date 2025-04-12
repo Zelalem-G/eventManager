@@ -61,6 +61,7 @@ public class SignupController {
         switch (result) {
             case SUCCESS:
                 Session.setSession(username , role);
+                AuthService.setUserIDToSession(username);
                 SceneController.changeScene(event, "homePage.fxml", "Home", username, role);
                 return;
 

@@ -10,6 +10,9 @@ public class Session {
 //        userId = id;
         role = r;
     }
+    public static void setSessionId(int id) {
+        userId = id;
+    }
 
     public static String getUsername() { return username; }
     public static int getUserId() { return userId; }
