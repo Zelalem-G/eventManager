@@ -103,6 +103,7 @@ public class AuthService {
             }
 
         } catch (SQLException e) {
+            System.out.println(e.getMessage());
             e.printStackTrace();
         }
 
@@ -124,6 +125,7 @@ public class AuthService {
             }
 
         } catch (SQLException e) {
+            System.out.println(e.getMessage());
             e.printStackTrace();
         }
 
@@ -145,6 +147,7 @@ public class AuthService {
             }
 
         } catch (SQLException e) {
+            System.out.println(e.getMessage());
             e.printStackTrace();
         }
 
@@ -165,6 +168,7 @@ public class AuthService {
             }
 
         } catch (SQLException e) {
+            System.out.println(e.getMessage());
             e.printStackTrace();
         }
 
