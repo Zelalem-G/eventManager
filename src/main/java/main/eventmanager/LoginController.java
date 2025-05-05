@@ -51,7 +51,7 @@ public class LoginController {
 
         switch (result) {
             case SUCCESS:
-                SceneController.changeScene(event, "homePage.fxml", "Home", Session.getUsername(), Session.getRole());
+                SceneController.changeScene(event, "home.fxml", "Home", Session.getUsername(), Session.getRole());
                 break;
 
             case USER_NOT_FOUND:

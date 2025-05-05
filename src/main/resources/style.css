@@ -1,16 +1,11 @@
-/* style.css */
-.button {
-    -fx-background-color: #3498db;
-    -fx-text-fill: white;
-    -fx-font-weight: bold;
-    -fx-background-radius: 10;
-    -fx-padding: 10 20;
-    -fx-cursor: hand;
-    -fx-transition: all 0.3s ease-in-out; /* Smooth transition */
+.label {
+    -fx-font-family: "Segoe UI", sans-serif;
+    -fx-font-size: 14px;
 }
 
-.button:hover {
-    -fx-background-color: #2980b9;
-    -fx-scale-x: 1.05;
-    -fx-scale-y: 1.05;
+.button {
+    -fx-background-radius: 8;
+    -fx-cursor: hand;
+    -fx-font-size: 14px;
+    -fx-padding: 8 16;
 }

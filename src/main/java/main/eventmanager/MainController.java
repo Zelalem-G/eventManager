@@ -1,5 +1,6 @@
 package main.eventmanager;
 
+import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
@@ -52,6 +53,12 @@ public class MainController implements Initializable {
             System.out.println("ERROR IN MAINCONTROLLER initialize TRY CATCH");
             e.printStackTrace();
         }
+    }
+
+    @FXML
+    private void onGoback(ActionEvent event){
+        SceneController.changeScene(event,"homePage.fxml","events", Session.getUsername(),Session.getRole());
+
     }
 
     private List<Event> fetchEventsFromDatabase() {

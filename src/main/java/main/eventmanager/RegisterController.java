@@ -7,6 +7,7 @@ import javafx.scene.control.Alert.AlertType;
 import javafx.scene.control.Button;
 import javafx.scene.control.ComboBox;
 import javafx.scene.control.TextField;
+import javafx.scene.paint.Color;
 import javafx.scene.text.Text;
 
 import java.sql.*;
@@ -32,7 +33,7 @@ public class RegisterController {
 
     public void initialize() {
         // Populate gender options (Male, Female)
-        genderComboBox.getItems().addAll("Male", "Female");
+//        genderComboBox.getItems().addAll("Male", "Female");
 
         // Get the event ID from the session
         this.eventId = Session.getEventId();
@@ -129,7 +130,8 @@ public class RegisterController {
     private void showError(String message) {
         // Display error message in the UI
         statusText.setText(message);
-        statusText.setStyle("-fx-text-fill: red;");
+        statusText.setFill(Color.web("#FF4C4C"));
+//        statusText.setStyle("-fx-text-fill: red;");
 
         // Show alert dialog
         Alert alert = new Alert(AlertType.ERROR);
@@ -142,7 +144,8 @@ public class RegisterController {
     private void showSuccess(String message) {
         // Display success message in the UI
         statusText.setText(message);
-        statusText.setStyle("-fx-text-fill: green;");
+        statusText.setFill(Color.web("#28A745"));
+//        statusText.setStyle("-fx-text-fill: green;");
 
         // Show alert dialog
         Alert alert = new Alert(AlertType.INFORMATION);

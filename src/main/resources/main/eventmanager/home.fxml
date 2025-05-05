@@ -1,0 +1,80 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.geometry.Insets?>
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.MenuButton?>
+<?import javafx.scene.control.MenuItem?>
+<?import javafx.scene.control.SeparatorMenuItem?>
+<?import javafx.scene.image.Image?>
+<?import javafx.scene.image.ImageView?>
+<?import javafx.scene.layout.BorderPane?>
+<?import javafx.scene.layout.HBox?>
+<?import javafx.scene.layout.Region?>
+<?import javafx.scene.layout.VBox?>
+<?import javafx.scene.text.Font?>
+
+<BorderPane stylesheets="@../styles/home.css" xmlns="http://javafx.com/javafx/23.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="main.eventmanager.HomeController">
+
+    <!-- Top navigation bar -->
+    <top>
+        <HBox spacing="20" style="-fx-background-color: #2C3E50; -fx-padding: 15;">
+            <children>
+                <ImageView fitHeight="30" fitWidth="30">
+                    <image>
+                        <Image url="@../../images/logo-transparent.png" />
+                    </image>
+                </ImageView>
+                <Label style="-fx-text-fill: white; -fx-font-size: 20px; -fx-font-weight: bold;" text="Event Manager" />
+                <Region HBox.hgrow="ALWAYS" />
+                <Label fx:id="welcomeLabel" style="-fx-text-fill: white; -fx-font-size: 16px;" text="Hello, User!" />
+                <MenuButton style="-fx-background-color: #3498DB; -fx-text-fill: white;" text="Menu">
+                    <items>
+                        <MenuItem onAction="#onMenuClick" text="Home" fx:id="homeMenuItem" />
+                        <MenuItem onAction="#onMenuClick" text="Available Events" fx:id="browseEventsMenuItem" />
+                        <MenuItem onAction="#onMenuClick" text="Registered Events" fx:id="myRegisteredMenuItem" />
+                        <MenuItem onAction="#onMenuClick" text="Account" fx:id="accountMenuItem" />
+                        <SeparatorMenuItem />
+                        <MenuItem fx:id="adminEventBtn" onAction="#onMenuClick" text="Manage Events (Admin)" />
+                        <MenuItem fx:id="adminOpsBtn" onAction="#onMenuClick" text="Admin Operations" />
+                        <SeparatorMenuItem />
+                        <MenuItem onAction="#onMenuClick" text="About Us" fx:id="aboutMenuItem" />
+                    </items>
+                </MenuButton>
+            </children>
+        </HBox>
+    </top>
+
+    <!-- Center content -->
+    <center>
+        <VBox alignment="TOP_CENTER" spacing="20">
+            <padding>
+                <Insets bottom="20" left="20" right="20" top="20" />
+            </padding>
+            <children>
+                <Label text="Welcome to the Event Management System!" textFill="#2C3E50">
+                    <font>
+                        <Font name="Segoe UI Semibold" size="24" />
+                    </font>
+                </Label>
+
+                <Label text="Easily browse, register, and manage exciting events happening around you.">
+                    <font>
+                        <Font name="Arial" size="16" />
+                    </font>
+                </Label>
+
+                <HBox alignment="CENTER" spacing="20">
+                    <Button onAction="#onBrowseEvents" prefWidth="150" style="-fx-background-color: #3498DB; -fx-text-fill: white;" text="Browse Events" />
+                    <Button onAction="#onMyRegisteredEvents" prefWidth="150" style="-fx-background-color: #63B3ED; -fx-text-fill: white;" text="My Registered" />
+                </HBox>
+
+                <HBox alignment="CENTER" spacing="20">
+                    <Button onAction="#onAbout" prefWidth="150" style="-fx-background-color: #2ECC71; -fx-text-fill: white;" text="About Us" />
+                    <Button onAction="#onAccount" prefWidth="150" style="-fx-background-color: #E67E22; -fx-text-fill: white;" text="Account Settings" />
+                </HBox>
+            </children>
+        </VBox>
+    </center>
+
+</BorderPane>

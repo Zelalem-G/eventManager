@@ -30,6 +30,12 @@ public class AddEventFormController {
 
     private int adminId = Session.getUserId();
 
+    @FXML
+    private void onHome(ActionEvent event){
+        SceneController.changeScene(event,"homePage.fxml","events", Session.getUsername(),Session.getRole());
+
+    }
+
     public void onRegisterEvent(ActionEvent event){
         String eventName = eventNameTextfield.getText();
         String location = locationTextfield.getText();

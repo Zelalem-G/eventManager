@@ -32,5 +32,10 @@ public class HomePageController {
         SceneController.changeScene(event,"events.fxml","events", Session.getUsername(),Session.getRole());
     }
 
+    public void onAdmin(ActionEvent event){
+        System.out.println("ON Admin BUTTON CLICKED");
+        SceneController.changeScene(event,"eventCRUD.fxml","admin", Session.getUsername(),Session.getRole());
+    }
+
 
 }
