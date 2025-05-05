@@ -1,0 +1,16 @@
+/* style.css */
+.button {
+    -fx-background-color: #3498db;
+    -fx-text-fill: white;
+    -fx-font-weight: bold;
+    -fx-background-radius: 10;
+    -fx-padding: 10 20;
+    -fx-cursor: hand;
+    -fx-transition: all 0.3s ease-in-out; /* Smooth transition */
+}
+
+.button:hover {
+    -fx-background-color: #2980b9;
+    -fx-scale-x: 1.05;
+    -fx-scale-y: 1.05;
+}

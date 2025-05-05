@@ -27,5 +27,10 @@ public class HomePageController {
         SceneController.changeScene(event,"addEventForm.fxml","Add event", Session.getUsername(),Session.getRole());
     }
 
+    public void onBrowseEvents(ActionEvent event){
+        System.out.println("ON BROWSE EVENT BUTTON CLICKED");
+        SceneController.changeScene(event,"events.fxml","events", Session.getUsername(),Session.getRole());
+    }
+
 
 }

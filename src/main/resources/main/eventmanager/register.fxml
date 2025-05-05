@@ -1,0 +1,56 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.*?>
+<?import javafx.scene.image.ImageView?>
+<?import javafx.scene.layout.*?>
+<?import javafx.geometry.Insets?>
+<?import javafx.geometry.Pos?>
+
+<?import javafx.collections.FXCollections?>
+<?import javafx.scene.text.Text?>
+<?import java.lang.String?>
+<StackPane xmlns:fx="http://javafx.com/fxml" fx:controller="main.eventmanager.RegisterController" style="-fx-background-color: #f4f6f8;">
+
+   <!-- Main container -->
+   <VBox alignment="TOP_CENTER" spacing="20" prefWidth="500">
+
+      <!-- Mini Navbar -->
+      <HBox alignment="CENTER_LEFT" spacing="10" style="-fx-background-color: #2c3e50; -fx-padding: 10;">
+         <Button text="⟵ Back" onAction="#goBack" style="-fx-background-color: transparent; -fx-text-fill: white; -fx-font-size: 14;"/>
+         <Label text="Event Registration" style="-fx-text-fill: white; -fx-font-size: 16px; -fx-font-weight: bold;"/>
+      </HBox>
+
+      <!-- Registration form -->
+      <VBox spacing="15" alignment="CENTER" style="-fx-padding: 30;">
+         <TextField fx:id="phoneNumberField" promptText="Phone Number"
+                    style="-fx-background-radius: 8; -fx-padding: 8;"/>
+         <TextField fx:id="emailField" promptText="Email"
+                    style="-fx-background-radius: 8; -fx-padding: 8;"/>
+         <TextField fx:id="institutionField" promptText="Institution"
+                    style="-fx-background-radius: 8; -fx-padding: 8;"/>
+         <TextField fx:id="ageField" promptText="Age"
+                    style="-fx-background-radius: 8; -fx-padding: 8;"/>
+
+         <!-- Gender selection -->
+         <HBox alignment="CENTER" spacing="10">
+            <Label text="Gender:"/>
+            <ComboBox fx:id="genderComboBox">
+               <items>
+                  <FXCollections fx:factory="observableArrayList">
+                     <String fx:value="Male"/>
+                     <String fx:value="Female"/>
+                  </FXCollections>
+               </items>
+            </ComboBox>
+         </HBox>
+
+         <!-- Register Button -->
+         <Button fx:id="registerButton" text="Register" onAction="#handleRegistration"
+                 style="-fx-background-color: #3498db; -fx-text-fill: white; -fx-font-weight: bold; -fx-background-radius: 10; -fx-padding: 10 20;"/>
+
+         <!-- Status Message -->
+         <Text fx:id="statusText" style="-fx-fill: red;"/>
+      </VBox>
+
+   </VBox>
+</StackPane>
