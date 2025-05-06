@@ -3,9 +3,14 @@ package main.eventmanager;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
+import javafx.scene.Scene;
+import javafx.scene.control.Button;
 import javafx.scene.control.Label;
 import javafx.scene.control.MenuItem;
 import javafx.scene.control.MenuButton;
+import javafx.scene.image.Image;
+import javafx.scene.image.ImageView;
+import javafx.scene.layout.*;
 
 import java.net.URL;
 import java.util.ResourceBundle;
@@ -14,6 +19,18 @@ public class HomeController implements Initializable {
 
     @FXML
     private Label welcomeLabel;
+
+    @FXML
+    private Button browseEventCardBtn;
+
+    @FXML
+    private Button myRegisteredCardBtn;
+
+    @FXML
+    private Button accSettingCardBtn;
+
+    @FXML
+    private Button aboutUsCardBtn;
 
     @FXML
     private MenuButton menuButton;
@@ -33,10 +50,21 @@ public class HomeController implements Initializable {
     @FXML
     private MenuItem aboutUsBtn;
 
+    @FXML
+    private VBox mainVBox; // fx:id of your VBox in FXML
+
+    @FXML
+    private StackPane stackPane;
+
+    // url="@../../images/bg.jpg"
+
+
     @Override
     public void initialize(URL location, ResourceBundle resources) {
         // Call setUserInformation here when the controller is initialized
         setUserInformation(Session.getUsername(), Session.getRole());
+        styleCardButtons();
+        setupBackgroundImage();
     }
 
     // Method to set user information dynamically based on role
@@ -122,6 +150,31 @@ public class HomeController implements Initializable {
                 break;
             default:
                 break;
+        }
+    }
+    public void styleCardButtons() {
+        aboutUsCardBtn.setStyle("-fx-background-color: linear-gradient(to bottom right, #667eea, #764ba2);");
+        myRegisteredCardBtn.setStyle("-fx-background-color: linear-gradient(to bottom right, #f7971e, #ffd200);");
+        browseEventCardBtn.setStyle("-fx-background-color: linear-gradient(to bottom right, #00c6ff, #0072ff);");
+        accSettingCardBtn.setStyle("-fx-background-color: linear-gradient(to bottom right, #43cea2, #185a9d);");
+    }
+
+    private void setupBackgroundImage() {
+        // Load from classpath (resources/images/bg.jpg)
+        URL imageUrl = getClass().getResource("/images/bg.jpg");
+
+        if (imageUrl != null) {
+            BackgroundImage backgroundImage = new BackgroundImage(
+                    new Image(imageUrl.toExternalForm()),
+                    BackgroundRepeat.NO_REPEAT,
+                    BackgroundRepeat.NO_REPEAT,
+                    BackgroundPosition.CENTER,
+                    new BackgroundSize(100, 100, true, true, true, false)
+            );
+
+            stackPane.setBackground(new Background(backgroundImage));
+        } else {
+            System.err.println("⚠️ Image not found in classpath at /images/bg.jpg");
         }
     }
 
