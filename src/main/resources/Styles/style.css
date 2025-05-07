@@ -124,3 +124,20 @@
     -fx-background-size: cover;
     -fx-background-position: center center;
 }
+
+.card-pane {
+    -fx-background-color: linear-gradient(from 0% 0% to 0% 100%, #2c3e50, #bdc3c7);
+    -fx-background-radius: 15;
+    -fx-border-radius: 15;
+    -fx-effect: dropshadow(gaussian, rgba(0, 0, 0, 0.2), 10, 0.3, 0, 4);
+    -fx-padding: 2;
+    -fx-border-color: #e0e0e0;
+    -fx-border-width: 1;
+    -fx-cursor: hand;
+    -fx-transition: all 0.3s ease;
+}
+.card-pane:hover {
+    -fx-effect: dropshadow(gaussian, rgba(0, 0, 0, 0.35), 12, 0.5, 0, 6);
+    -fx-scale-x: 1.01;
+    -fx-scale-y: 1.01;
+}

@@ -34,8 +34,21 @@ public class EventCRUDController implements Initializable {
     private Connection connection;
     private int selectedId = -1;
 
+    @FXML
+    private Label welcomeLabel;
+
+    @FXML
+    private MenuItem adminEventBtn;
+
+    @FXML
+    private MenuItem adminOpsBtn;
+
+    private MenuControllerHelper menuHelper;
+
     @Override
     public void initialize(URL url, ResourceBundle resourceBundle) {
+        menuHelper = new MenuControllerHelper(welcomeLabel, adminEventBtn, adminOpsBtn);
+        menuHelper.initializeMenu(Session.getUsername(), Session.getRole());
         try {
             connection = DBUtils.getConnection();
             setupTable();
@@ -43,6 +56,13 @@ public class EventCRUDController implements Initializable {
             setupRowClickListener();
         } catch (SQLException e) {
             showAlert(Alert.AlertType.ERROR, "Database Error", "Could not connect to the database.");
+        }
+    }
+
+    @FXML
+    private void onMenuClick(ActionEvent event) {
+        if (menuHelper != null) {
+            menuHelper.handleMenuClick(event);
         }
     }
 
@@ -93,34 +113,8 @@ public class EventCRUDController implements Initializable {
 
     @FXML
     private void handleAdd(ActionEvent event) {
-        String name = eventNameTextField.getText();
-        String location = locationTextField.getText();
-        LocalDate date = eventDatePicker.getValue();
-        String image = imagePathTextField.getText();
-        String desc = descriptionTextField.getText();
-
-        if (name.isEmpty() || location.isEmpty() || date == null) {
-            showAlert(Alert.AlertType.WARNING, "Missing Fields", "Please fill all required fields.");
-            return;
-        }
-
-        String query = "INSERT INTO events (event_name, location, event_date, image_path, description) VALUES (?, ?, ?, ?, ?)";
-
-        try (PreparedStatement ps = connection.prepareStatement(query)) {
-            ps.setString(1, name);
-            ps.setString(2, location);
-            ps.setDate(3, Date.valueOf(date));
-            ps.setString(4, image);
-            ps.setString(5, desc);
-            ps.executeUpdate();
-
-            showAlert(Alert.AlertType.INFORMATION, "Success", "Event added successfully!");
-            clearFields();
-            loadTableData();
-
-        } catch (SQLException e) {
-            showAlert(Alert.AlertType.ERROR, "Insert Error", e.getMessage());
-        }
+        System.out.println("Navigating to Add Events...");
+        SceneController.changeScene(event, "addEventForm.fxml", "Add Event", Session.getUsername(), Session.getRole());
     }
 
     @FXML

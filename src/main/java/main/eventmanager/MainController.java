@@ -5,6 +5,8 @@ import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
 import javafx.geometry.Insets;
+import javafx.scene.control.Label;
+import javafx.scene.control.MenuItem;
 import javafx.scene.layout.GridPane;
 import javafx.scene.layout.Pane;
 import EventModel.Event;
@@ -26,8 +28,22 @@ public class MainController implements Initializable {
 
     private List<Event> events;
 
+    @FXML
+    private Label welcomeLabel;
+
+    @FXML
+    private MenuItem adminEventBtn;
+
+    @FXML
+    private MenuItem adminOpsBtn;
+
+    private MenuControllerHelper menuHelper;
+
     @Override
     public void initialize(URL url, ResourceBundle resourceBundle) {
+        menuHelper = new MenuControllerHelper(welcomeLabel, adminEventBtn, adminOpsBtn);
+        menuHelper.initializeMenu(Session.getUsername(), Session.getRole());
+
         events = new ArrayList<>(fetchEventsFromDatabase());
         int col = 0;
         int row = 1;
@@ -56,10 +72,12 @@ public class MainController implements Initializable {
     }
 
     @FXML
-    private void onGoback(ActionEvent event){
-        SceneController.changeScene(event,"homePage.fxml","events", Session.getUsername(),Session.getRole());
-
+    private void onMenuClick(ActionEvent event) {
+        if (menuHelper != null) {
+            menuHelper.handleMenuClick(event);
+        }
     }
+
 
     private List<Event> fetchEventsFromDatabase() {
         List<Event> eventList = new ArrayList<>();

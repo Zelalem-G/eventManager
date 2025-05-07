@@ -2,19 +2,19 @@ package main.eventmanager;
 
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
-import javafx.scene.control.DatePicker;
-import javafx.scene.control.Label;
-import javafx.scene.control.TextArea;
-import javafx.scene.control.TextField;
+import javafx.fxml.Initializable;
+import javafx.scene.control.*;
 import javafx.scene.paint.Color;
 
+import java.net.URL;
 import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.time.LocalDate;
+import java.util.ResourceBundle;
 
-public class AddEventFormController {
+public class AddEventFormController implements Initializable {
     @FXML
     private Label registerResultLabel;
     @FXML
@@ -31,9 +31,29 @@ public class AddEventFormController {
     private int adminId = Session.getUserId();
 
     @FXML
-    private void onBack(ActionEvent event){
-        SceneController.changeScene(event,"home.fxml","events", Session.getUsername(),Session.getRole());
+    private Label welcomeLabel;
 
+    @FXML
+    private MenuItem adminEventBtn;
+
+    @FXML
+    private MenuItem adminOpsBtn;
+
+    private MenuControllerHelper menuHelper;
+
+    @Override
+    public void initialize(URL location, ResourceBundle resources) {
+        menuHelper = new MenuControllerHelper(welcomeLabel, adminEventBtn, adminOpsBtn);
+        menuHelper.initializeMenu(Session.getUsername(), Session.getRole());
+
+        // your other init logic
+    }
+
+    @FXML
+    private void onMenuClick(ActionEvent event) {
+        if (menuHelper != null) {
+            menuHelper.handleMenuClick(event);
+        }
     }
 
     public void onRegisterEvent(ActionEvent event){
