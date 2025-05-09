@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import java.lang.*?>
+<?import java.util.*?>
+<?import javafx.scene.*?>
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+
+<AnchorPane xmlns:fx="http://javafx.com/fxml" fx:controller="main.eventmanager.UsersViewController"
+            styleClass="DContentArea" stylesheets="@../../Styles/style.css">
+
+    <VBox spacing="20" AnchorPane.topAnchor="0" AnchorPane.bottomAnchor="0"
+          AnchorPane.leftAnchor="0" AnchorPane.rightAnchor="0" alignment="TOP_CENTER" styleClass="DUserBox">
+
+        <Label text="Registered Users" styleClass="DTitle"/>
+
+        <TableView fx:id="userTable" prefHeight="500" prefWidth="800" styleClass="DTable">
+            <columns>
+                <TableColumn fx:id="idCol" text="ID" prefWidth="50"/>
+                <TableColumn fx:id="usernameCol" text="Username" prefWidth="150"/>
+                <TableColumn fx:id="fullNameCol" text="Full Name" prefWidth="200"/>
+                <TableColumn fx:id="emailCol" text="Email" prefWidth="250"/>
+                <TableColumn fx:id="roleCol" text="Role" prefWidth="100"/>
+            </columns>
+        </TableView>
+
+    </VBox>
+</AnchorPane>
+

@@ -1,0 +1,60 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+<?import javafx.geometry.Insets?>
+
+<BorderPane fx:controller="main.eventmanager.FeedbackViewController"
+            xmlns:fx="http://javafx.com/fxml" prefWidth="900" prefHeight="600"
+            stylesheets="@../../Styles/style.css">
+
+    <!-- Top navigation bar -->
+    <top>
+        <HBox spacing="20" style="-fx-background-color: #2C3E50; -fx-padding: 15;">
+            <children>
+                <ImageView fitHeight="44.0" fitWidth="87.0">
+                    <image>
+                        <Image url="@../../images/logo-transparent.png" />
+                    </image>
+                </ImageView>
+                <Label prefHeight="46.0" prefWidth="151.0"
+                       style="-fx-text-fill: white; -fx-font-size: 20px; -fx-font-weight: bold;"
+                       styleClass="label-title" stylesheets="@../../Styles/style.css" text="Event Manager" />
+                <Region HBox.hgrow="ALWAYS" />
+                <Label fx:id="welcomeLabel" prefHeight="53.0" prefWidth="165.0"
+                       style="-fx-text-fill: white; -fx-font-size: 16px;"
+                       styleClass="Label_greeting" stylesheets="@../../Styles/style.css" text="Hello, User!" />
+                <MenuButton prefHeight="50.0" prefWidth="135.0"
+                            style="-fx-background-color: #3498DB; -fx-text-fill: white;"
+                            styleClass="button" stylesheets="@../../Styles/style.css" text="Menu">
+                    <items>
+                        <MenuItem fx:id="homeMenuItem" onAction="#onMenuClick" text="Home" />
+                        <MenuItem fx:id="browseEventsMenuItem" onAction="#onMenuClick" text="Available Events" />
+                        <MenuItem fx:id="myRegisteredMenuItem" onAction="#onMenuClick" text="Registered Events" />
+                        <MenuItem fx:id="accountMenuItem" onAction="#onMenuClick" text="Account" />
+                        <SeparatorMenuItem />
+                        <MenuItem fx:id="adminEventBtn" onAction="#onMenuClick" text="Manage Events (Admin)" />
+                        <MenuItem fx:id="adminOpsBtn" onAction="#onMenuClick" text="Admin Operations" />
+                        <SeparatorMenuItem />
+                        <MenuItem fx:id="aboutMenuItem" onAction="#onMenuClick" text="About Us" />
+                    </items>
+                </MenuButton>
+            </children>
+        </HBox>
+    </top>
+
+    <!-- Main content area -->
+    <center>
+        <VBox spacing="20" alignment="TOP_CENTER" padding="20" styleClass="D-feedback-container">
+            <Label text="User Feedback" styleClass="D-feedback-title" />
+            <TableView fx:id="feedbackTable" prefHeight="500" prefWidth="850" styleClass="D-feedback-table">
+                <columns>
+                    <TableColumn fx:id="usernameCol" text="Username" prefWidth="150" />
+                    <TableColumn fx:id="messageCol" text="Message" prefWidth="400" />
+                    <TableColumn fx:id="ratingCol" text="Rating" prefWidth="100" />
+                    <TableColumn fx:id="dateCol" text="Submitted On" prefWidth="200" />
+                </columns>
+            </TableView>
+        </VBox>
+    </center>
+</BorderPane>

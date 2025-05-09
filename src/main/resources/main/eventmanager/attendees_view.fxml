@@ -1,0 +1,53 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import java.lang.*?>
+<?import java.util.*?>
+<?import javafx.scene.*?>
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+
+<BorderPane xmlns="http://javafx.com/javafx"
+            xmlns:fx="http://javafx.com/fxml"
+            fx:controller="main.eventmanager.AttendeesViewController">
+
+    <!-- Include top nav -->
+    <top>
+        <fx:include source="navbar.fxml" />
+    </top>
+
+    <!-- Side menu -->
+    <left>
+        <VBox spacing="15" styleClass="D-sideMenu">
+            <children>
+                <Label text="Admin Operations" styleClass="D-sectionTitle" />
+                <Button text="Users" onAction="#goToUsers" styleClass="D-sideBtn" />
+                <Button text="Feedback" onAction="#goToFeedback" styleClass="D-sideBtn" />
+                <Button text="Attendees" styleClass="D-sideBtn D-selected" />
+                <Button text="Statistics" onAction="#goToStatistics" styleClass="D-sideBtn" />
+            </children>
+        </VBox>
+    </left>
+
+    <!-- Main content -->
+    <center>
+        <VBox spacing="20" alignment="TOP_CENTER" styleClass="D-mainContent">
+            <Label text="View Event Attendees" styleClass="D-title" />
+            <HBox spacing="10" alignment="CENTER">
+                <Label text="Select Event:" />
+                <ComboBox fx:id="eventComboBox" prefWidth="300" onAction="#onEventSelect" />
+            </HBox>
+
+            <TableView fx:id="attendeesTable" prefWidth="700" prefHeight="400" styleClass="D-table">
+                <columns>
+                    <TableColumn text="Full Name" fx:id="nameCol" prefWidth="150" />
+                    <TableColumn text="Email" fx:id="emailCol" prefWidth="180" />
+                    <TableColumn text="Phone" fx:id="phoneCol" prefWidth="120" />
+                    <TableColumn text="Gender" fx:id="genderCol" prefWidth="80" />
+                    <TableColumn text="Institution" fx:id="institutionCol" prefWidth="120" />
+                    <TableColumn text="Age" fx:id="ageCol" prefWidth="50" />
+                </columns>
+            </TableView>
+        </VBox>
+    </center>
+</BorderPane>
+

@@ -1,0 +1,65 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import java.lang.*?>
+<?import java.util.*?>
+<?import javafx.scene.*?>
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+
+<BorderPane xmlns:fx="http://javafx.com/fxml" fx:controller="main.eventmanager.AdminDashboardController">
+    <!-- Top nav -->
+    <top>
+        <HBox spacing="20" style="-fx-background-color: #2C3E50; -fx-padding: 15;">
+            <children>
+                <ImageView fitHeight="44.0" fitWidth="87.0">
+                    <image>
+                        <Image url="@../../images/logo-transparent.png" />
+                    </image>
+                </ImageView>
+                <Label prefHeight="46.0" prefWidth="151.0"
+                       styleClass="label-title"
+                       stylesheets="@../../Styles/style.css"
+                       text="Event Manager" />
+                <Region HBox.hgrow="ALWAYS" />
+                <Label fx:id="welcomeLabel" prefHeight="53.0" prefWidth="165.0"
+                       styleClass="Label_greeting"
+                       stylesheets="@../../Styles/style.css"
+                       text="Hello, Admin!" />
+                <MenuButton prefHeight="50.0" prefWidth="135.0"
+                            styleClass="button"
+                            stylesheets="@../../Styles/style.css"
+                            text="Menu">
+                    <items>
+                        <MenuItem fx:id="homeMenuItem" onAction="#onMenuClick" text="Home" />
+                        <MenuItem fx:id="browseEventsMenuItem" onAction="#onMenuClick" text="Available Events" />
+                        <MenuItem fx:id="myRegisteredMenuItem" onAction="#onMenuClick" text="Registered Events" />
+                        <MenuItem fx:id="accountMenuItem" onAction="#onMenuClick" text="Account" />
+                        <SeparatorMenuItem />
+                        <MenuItem fx:id="adminEventBtn" onAction="#onMenuClick" text="Manage Events (Admin)" />
+                        <MenuItem fx:id="adminOpsBtn" onAction="#onMenuClick" text="Admin Operations" />
+                        <SeparatorMenuItem />
+                        <MenuItem fx:id="aboutMenuItem" onAction="#onMenuClick" text="About Us" />
+                    </items>
+                </MenuButton>
+            </children>
+        </HBox>
+    </top>
+
+    <!-- Side menu for dashboard operations -->
+    <left>
+        <VBox spacing="10" styleClass="DSidebar" stylesheets="@../../Styles/style.css" prefWidth="200" alignment="TOP_CENTER">
+            <children>
+                <Button text="View All Users" onAction="#handleUserView" styleClass="DMenuButton"/>
+                <Button text="Feedbacks" onAction="#handleFeedbackView" styleClass="DMenuButton"/>
+                <Button text="Event Attendees" onAction="#handleAttendeesView" styleClass="DMenuButton"/>
+                <Button text="Statistics" onAction="#handleStatsView" styleClass="DMenuButton"/>
+            </children>
+        </VBox>
+    </left>
+
+    <!-- Dynamic content area -->
+    <center>
+        <StackPane fx:id="contentArea" styleClass="DContentArea" stylesheets="@../../Styles/style.css"/>
+    </center>
+</BorderPane>
+

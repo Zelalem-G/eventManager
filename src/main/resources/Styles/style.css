@@ -374,3 +374,121 @@
 .back-button-A:hover {
     -fx-text-fill: #a29bfe;
 }
+/*           Dash board          */
+
+.DSidebar {
+    -fx-background-color: #34495E;
+    -fx-padding: 20;
+}
+
+.DMenuButton {
+    -fx-background-color: #2980B9;
+    -fx-text-fill: white;
+    -fx-font-size: 14px;
+    -fx-font-weight: bold;
+    -fx-padding: 10 20;
+    -fx-cursor: hand;
+    -fx-background-radius: 6;
+    -fx-effect: dropshadow(gaussian, rgba(0,0,0,0.2), 4, 0, 2, 2);
+}
+
+.DMenuButton:hover {
+    -fx-background-color: #3498DB;
+}
+
+.DContentArea {
+    -fx-background-color: #ECF0F1;
+    -fx-padding: 25;
+}
+
+.DUserBox {
+    -fx-padding: 30;
+    -fx-background-color: white;
+    -fx-background-radius: 10;
+    -fx-effect: dropshadow(gaussian, rgba(0, 0, 0, 0.1), 10, 0, 0, 3);
+}
+
+.DTitle {
+    -fx-font-size: 20px;
+    -fx-font-weight: bold;
+    -fx-text-fill: #2C3E50;
+}
+
+.DTable {
+    -fx-border-color: #bdc3c7;
+    -fx-border-width: 1;
+    -fx-background-radius: 5;
+    -fx-table-cell-border-color: #ecf0f1;
+    -fx-font-size: 14px;
+}
+.D-feedback-container {
+    -fx-background-color: #f4f7f9;
+    -fx-padding: 30;
+    -fx-border-color: #dcdcdc;
+    -fx-border-width: 2px;
+    -fx-border-radius: 10px;
+    -fx-background-radius: 10px;
+    -fx-effect: dropshadow(three-pass-box, rgba(0,0,0,0.1), 10, 0, 0, 5);
+}
+
+.D-feedback-title {
+    -fx-font-size: 26px;
+    -fx-font-weight: bold;
+    -fx-text-fill: #2C3E50;
+    -fx-underline: true;
+}
+
+.D-feedback-table {
+    -fx-border-color: #ccc;
+    -fx-border-radius: 6px;
+    -fx-table-cell-border-color: #ddd;
+    -fx-font-size: 14px;
+    -fx-background-color: white;
+}
+
+.D-sideMenu {
+    -fx-padding: 20;
+    -fx-background-color: #34495E;
+}
+
+.D-sideBtn {
+    -fx-background-color: #2C3E50;
+    -fx-text-fill: white;
+    -fx-font-weight: bold;
+    -fx-padding: 10;
+}
+
+.D-selected {
+    -fx-background-color: #1ABC9C;
+}
+
+.D-mainContent {
+    -fx-padding: 25;
+}
+
+.D-title {
+    -fx-font-size: 22px;
+    -fx-text-fill: #2C3E50;
+    -fx-font-weight: bold;
+}
+
+.D-table {
+    -fx-border-color: #ccc;
+    -fx-border-radius: 5;
+}
+
+/* Dashboard Styles */
+.D-card {
+    -fx-background-color: white;
+    -fx-padding: 20;
+    -fx-border-radius: 10;
+    -fx-effect: dropshadow(three-pass-box, rgba(0, 0, 0, 0.2), 10, 0, 0, 0);
+    -fx-pref-width: 200;
+    -fx-pref-height: 150;
+}
+
+.D-card > Label {
+    -fx-font-size: 16px;
+    -fx-font-weight: bold;
+    -fx-text-fill: #2C3E50;
+}
