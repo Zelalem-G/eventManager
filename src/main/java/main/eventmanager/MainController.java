@@ -5,15 +5,28 @@ import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
 import javafx.geometry.Insets;
+import javafx.scene.control.Button;
 import javafx.scene.control.Label;
 import javafx.scene.control.MenuItem;
+import javafx.scene.control.TextField;
 import javafx.scene.layout.GridPane;
 import javafx.scene.layout.Pane;
 import EventModel.Event;
+import javafx.scene.layout.VBox;
+
+import javafx.fxml.FXML;
+import javafx.scene.control.TextField;
+import javafx.scene.control.Button;
+import javafx.scene.layout.VBox;
+import javafx.scene.Node;
+
 
 import java.io.IOException;
 import java.net.URL;
 import java.sql.*;
+import java.time.LocalDate;
+import java.time.format.DateTimeFormatter;
+import java.time.format.DateTimeParseException;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.ResourceBundle;
@@ -38,6 +51,10 @@ public class MainController implements Initializable {
     private MenuItem adminOpsBtn;
 
     private MenuControllerHelper menuHelper;
+
+    @FXML private TextField searchField;
+    @FXML private Button searchButton;
+    @FXML private VBox eventListVBox;
 
     @Override
     public void initialize(URL url, ResourceBundle resourceBundle) {
@@ -69,6 +86,9 @@ public class MainController implements Initializable {
             System.out.println("ERROR IN MAINCONTROLLER initialize TRY CATCH");
             e.printStackTrace();
         }
+        searchButton.setOnAction(e -> onSearchClicked());
+        searchField.setOnAction(event -> onSearchClicked());
+
     }
 
     @FXML
@@ -117,4 +137,62 @@ public class MainController implements Initializable {
         event.setDescription(description);
         return event;
     }
+
+    @FXML
+    private void onSearchClicked() {
+        String query = searchField.getText().toLowerCase().trim();
+        myGrid.getChildren().clear();
+
+        // Normalize date string (e.g., from 09/05/2025 to 2025-05-09)
+        String normalizedDate = normalizeDate(query);
+
+        int col = 0;
+        int row = 1;
+
+        try {
+            for (Event event : events) {
+                boolean matchesName = event.getEventName().toLowerCase().contains(query);
+                boolean matchesLocation = event.getEventLocation().toLowerCase().contains(query);
+                boolean matchesDate = false;
+                if (normalizedDate != null) {
+                    matchesDate = event.getEventDate().equals(normalizedDate);
+                }
+
+                // If query is empty, reload all events
+                if (query.isEmpty() || matchesName || matchesLocation || matchesDate) {
+                    FXMLLoader fxmlLoader = new FXMLLoader();
+                    fxmlLoader.setLocation(getClass().getResource("event1.fxml"));
+                    Pane pane = fxmlLoader.load();
+
+                    Event1Controller controller = fxmlLoader.getController();
+                    controller.setData(event);
+
+                    if (col == 3) {
+                        col = 0;
+                        row++;
+                    }
+
+                    myGrid.add(pane, col++, row);
+                    GridPane.setMargin(pane, new Insets(10));
+                }
+            }
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+    }
+    private String normalizeDate(String input) {
+        String[] formats = {"dd/MM/yyyy", "MM/dd/yyyy", "dd-MM-yyyy", "yyyy-MM-dd"};
+
+        for (String format : formats) {
+            try {
+                DateTimeFormatter formatter = DateTimeFormatter.ofPattern(format);
+                LocalDate date = LocalDate.parse(input, formatter);
+                return date.toString();  // Always return in yyyy-MM-dd format
+            } catch (DateTimeParseException ignored) {}
+        }
+
+        return null;  // Not a valid date input
+    }
+
+
 }

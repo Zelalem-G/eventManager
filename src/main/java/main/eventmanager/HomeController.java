@@ -84,13 +84,13 @@ public class HomeController implements Initializable {
     // Method for about us section
     public void onAbout(ActionEvent event) {
         System.out.println("Navigating to About Us...");
-        SceneController.changeScene(event, "aboutUs.fxml", "About Us", Session.getUsername(), Session.getRole());
+        SceneController.changeScene(event, "AboutUs.fxml", "About Us", Session.getUsername(), Session.getRole());
     }
 
     // Method for account settings
     public void onAccount(ActionEvent event) {
         System.out.println("Navigating to Account Settings...");
-        SceneController.changeScene(event, "accountSettings.fxml", "Account Settings", Session.getUsername(), Session.getRole());
+        SceneController.changeScene(event, "myAccount.fxml", "Account", Session.getUsername(), Session.getRole());
     }
 
     // To handle the menu clicks dynamically

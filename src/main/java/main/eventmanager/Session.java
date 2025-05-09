@@ -2,8 +2,8 @@ package main.eventmanager;
 
 public class Session {
     private static String username;
-    private static int userId;
-    private static int eventId;
+    private static int userId = -1;
+    private static int eventId = -1;
     private static String role;
 
     public static void setSession(String user, String r) {
@@ -16,6 +16,13 @@ public class Session {
     }
     public static void setSessionEventId(int id) {
         eventId = id;
+    }
+
+    public static void clearUserData() {
+        username = null;
+        userId = -1;
+        eventId = -1;
+        role = null;
     }
 
     public static String getUsername() { return username; }

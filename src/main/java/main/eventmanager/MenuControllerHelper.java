@@ -39,7 +39,7 @@ public class MenuControllerHelper {
                 SceneController.changeScene(event, "myRegisteredEvents.fxml", "My Registered Events", Session.getUsername(), Session.getRole());
                 break;
             case "Account":
-                SceneController.changeScene(event, "accountSettings.fxml", "Account Settings", Session.getUsername(), Session.getRole());
+                SceneController.changeScene(event, "myAccount.fxml", "Account Settings", Session.getUsername(), Session.getRole());
                 break;
             case "About Us":
                 SceneController.changeScene(event, "aboutUs.fxml", "About Us", Session.getUsername(), Session.getRole());

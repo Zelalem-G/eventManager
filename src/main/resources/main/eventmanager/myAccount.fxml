@@ -1,0 +1,71 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.PasswordField?>
+<?import javafx.scene.control.Tab?>
+<?import javafx.scene.control.TabPane?>
+<?import javafx.scene.control.TextField?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.layout.VBox?>
+
+<AnchorPane styleClass="roott" stylesheets="@../../Styles/style.css" xmlns="http://javafx.com/javafx/23.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="main.eventmanager.myAccountController">
+    <VBox alignment="TOP_CENTER" spacing="20" styleClass="container-A" stylesheets="@../../Styles/style.css" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
+
+        <Button onAction="#handleBack" styleClass="button-A" stylesheets="@../../Styles/style.css" text="← Back to Home" />
+
+        <Label fx:id="AusernameLabel" styleClass="label-A" stylesheets="@../../Styles/style.css" />
+
+        <TabPane fx:id="accountTabPane" maxHeight="500.0" prefHeight="440.0" style="-fx-tab-background-color: transparent;" styleClass="tab-pane" stylesheets="@../../Styles/style.css" tabClosingPolicy="UNAVAILABLE">
+            <tabs>
+                <!-- Account Info Tab -->
+                <Tab text="Account Info">
+                    <AnchorPane stylesheets="@../../Styles/style.css">
+                        <VBox alignment="CENTER" spacing="12" styleClass="tab-content-A" AnchorPane.bottomAnchor="20.0" AnchorPane.leftAnchor="30.0" AnchorPane.rightAnchor="30.0" AnchorPane.topAnchor="20.0">
+
+                            <Label styleClass="label-A" text="Full Name:" />
+                            <TextField fx:id="AfullNameField" styleClass="text-field-A" />
+
+                            <Label styleClass="label-A" text="Email:" />
+                            <TextField fx:id="AemailField" styleClass="text-field-A" />
+
+                            <Button fx:id="AupdateBtn" onAction="#handleUpdate" styleClass="button-A" text="Update Info" />
+                            <Label fx:id="AstatusLabel" styleClass="status-label-A" />
+                        </VBox>
+                    </AnchorPane>
+                </Tab>
+
+                <!-- Change Password Tab -->
+                <Tab text="Change Password">
+                    <AnchorPane>
+                        <VBox alignment="CENTER" layoutX="30.0" layoutY="14.0" prefHeight="323.0" prefWidth="498.0" spacing="12" styleClass="tab-content-A" AnchorPane.bottomAnchor="104.0" AnchorPane.leftAnchor="30.0" AnchorPane.rightAnchor="30.0" AnchorPane.topAnchor="14.0">
+
+                            <Label styleClass="label-A" text="Current Password:" />
+                            <PasswordField fx:id="AcurrentPassword" styleClass="text-field-A" />
+
+                            <Label styleClass="label-A" text="New Password:" />
+                            <PasswordField fx:id="AnewPassword" styleClass="text-field-A" />
+
+                            <Label styleClass="label-A" text="Confirm New Password:" />
+                            <PasswordField fx:id="AconfirmPassword" styleClass="text-field-A" />
+
+                            <Button onAction="#handleChangePassword" styleClass="button-A" text="Change Password" />
+                            <Label fx:id="ApasswordStatus" styleClass="status-label-A" />
+                        </VBox>
+                    </AnchorPane>
+                </Tab>
+
+                <!-- Logout Tab -->
+                <Tab text="Logout">
+                    <AnchorPane stylesheets="@../../Styles/style.css">
+                        <VBox alignment="CENTER" spacing="20" styleClass="tab-content-A" AnchorPane.bottomAnchor="20.0" AnchorPane.leftAnchor="30.0" AnchorPane.rightAnchor="30.0" AnchorPane.topAnchor="20.0">
+
+                            <Label styleClass="label-A" text="Are you sure you want to log out?" />
+                            <Button onAction="#logout" styleClass="button-A" text="Logout" />
+                        </VBox>
+                    </AnchorPane>
+                </Tab>
+            </tabs>
+        </TabPane>
+    </VBox>
+</AnchorPane>
