@@ -7,7 +7,6 @@ import javafx.fxml.FXML;
 import javafx.scene.control.*;
 import javafx.scene.control.cell.PropertyValueFactory;
 import model.Attendee;
-import model.Database;
 import model.Event;
 
 import java.sql.*;
@@ -41,6 +40,9 @@ public class AttendeesViewController {
     private TableColumn<Attendee, Integer> ageCol;
 
     @FXML
+    private Label noAttendeesLabel;
+
+    @FXML
     public void initialize() {
         nameCol.setCellValueFactory(new PropertyValueFactory<>("fullName"));
         emailCol.setCellValueFactory(new PropertyValueFactory<>("email"));
@@ -54,7 +56,7 @@ public class AttendeesViewController {
 
     private void loadEvents() {
         List<Event> events = new ArrayList<>();
-        try (Connection conn = Database.getConnection();
+        try (Connection conn = DBUtils.getConnection();
              PreparedStatement stmt = conn.prepareStatement("SELECT event_id, event_name FROM events")) {
             ResultSet rs = stmt.executeQuery();
             while (rs.next()) {
@@ -70,7 +72,7 @@ public class AttendeesViewController {
     private void onEventSelect(ActionEvent event) {
         Event selected = eventComboBox.getSelectionModel().getSelectedItem();
         if (selected != null) {
-            loadAttendees(selected.getId());
+            loadAttendees(selected.getEventId());
         }
     }
 
@@ -83,7 +85,7 @@ public class AttendeesViewController {
                 JOIN attendees a ON r.user_id = a.user_id
                 WHERE r.event_id = ?
                 """;
-        try (Connection conn = Database.getConnection();
+        try (Connection conn = DBUtils.getConnection();
              PreparedStatement stmt = conn.prepareStatement(sql)) {
             stmt.setInt(1, eventId);
             ResultSet rs = stmt.executeQuery();
@@ -99,24 +101,9 @@ public class AttendeesViewController {
                 attendees.add(attendee);
             }
             attendeesTable.setItems(attendees);
+            noAttendeesLabel.setVisible(attendees.isEmpty());
         } catch (SQLException e) {
             e.printStackTrace();
         }
-    }
-
-    // Navigation handlers
-    @FXML
-    private void goToUsers(ActionEvent event) {
-        SceneController.changeScene(event, "users_view.fxml", "Users", Session.getUsername(), Session.getRole());
-    }
-
-    @FXML
-    private void goToFeedback(ActionEvent event) {
-        SceneController.changeScene(event, "feedback_view.fxml", "Feedback", Session.getUsername(), Session.getRole());
-    }
-
-    @FXML
-    private void goToStatistics(ActionEvent event) {
-        SceneController.changeScene(event, "statistics_view.fxml", "Statistics", Session.getUsername(), Session.getRole());
     }
 }

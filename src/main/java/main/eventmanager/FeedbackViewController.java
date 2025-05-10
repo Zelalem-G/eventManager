@@ -1,16 +1,13 @@
 package main.eventmanager;
 
-import database.DatabaseConnection;
-import helpers.Session;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
-import javafx.scene.control.Label;
 import javafx.scene.control.TableColumn;
 import javafx.scene.control.TableView;
 import javafx.scene.control.cell.PropertyValueFactory;
-import models.FeedbackData;
+import model.FeedbackData;
 
 import java.net.URL;
 import java.sql.Connection;
@@ -19,9 +16,6 @@ import java.sql.ResultSet;
 import java.util.ResourceBundle;
 
 public class FeedbackViewController implements Initializable {
-
-    @FXML
-    private Label welcomeLabel;
 
     @FXML
     private TableView<FeedbackData> feedbackTable;
@@ -36,26 +30,29 @@ public class FeedbackViewController implements Initializable {
     private TableColumn<FeedbackData, String> messageCol;
 
     @FXML
-    private TableColumn<FeedbackData, String> createdAtCol;
+    private TableColumn<FeedbackData, String> dateCol;
 
-    private ObservableList<FeedbackData> feedbackList = FXCollections.observableArrayList();
+    private final ObservableList<FeedbackData> feedbackList = FXCollections.observableArrayList();
 
     @Override
     public void initialize(URL url, ResourceBundle resourceBundle) {
-        welcomeLabel.setText("Hello, " + Session.getUsername());
-
         usernameCol.setCellValueFactory(new PropertyValueFactory<>("username"));
         ratingCol.setCellValueFactory(new PropertyValueFactory<>("rating"));
         messageCol.setCellValueFactory(new PropertyValueFactory<>("message"));
-        createdAtCol.setCellValueFactory(new PropertyValueFactory<>("createdAt"));
+        dateCol.setCellValueFactory(new PropertyValueFactory<>("createdAt"));
 
         loadFeedback();
     }
 
     private void loadFeedback() {
-        String query = "SELECT f.rating, f.message, f.created_at, u.username FROM feedback f JOIN users u ON f.user_id = u.user_id";
+        String query = """
+                SELECT u.username, f.rating, f.message, f.created_at
+                FROM feedback f
+                JOIN users u ON f.user_id = u.user_id
+                ORDER BY f.created_at DESC;
+                """;
 
-        try (Connection conn = DatabaseConnection.getConnection();
+        try (Connection conn = DBUtils.getConnection();
              PreparedStatement stmt = conn.prepareStatement(query);
              ResultSet rs = stmt.executeQuery()) {
 
@@ -73,4 +70,3 @@ public class FeedbackViewController implements Initializable {
         }
     }
 }
-

@@ -6,5 +6,6 @@ module main.eventmanager {
     requires java.sql;
 
     opens main.eventmanager to javafx.fxml;
+    opens model to javafx.base;
     exports main.eventmanager;
 }

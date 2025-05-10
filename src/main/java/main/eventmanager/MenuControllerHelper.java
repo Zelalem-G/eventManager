@@ -50,7 +50,7 @@ public class MenuControllerHelper {
                 break;
             case "Admin Operations":
                 System.out.println("Admin accessing operations...");
-                SceneController.changeScene(event, "adminOperations.fxml", "Admin Operations", Session.getUsername(), Session.getRole());
+                SceneController.changeScene(event, "AdminDashboard.fxml", "Admin Operations", Session.getUsername(), Session.getRole());
                 break;
         }
     }

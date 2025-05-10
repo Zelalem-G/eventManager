@@ -1,34 +1,32 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
-<?import java.lang.*?>
-<?import java.util.*?>
-<?import javafx.scene.*?>
-<?import javafx.scene.control.*?>
-<?import javafx.scene.layout.*?>
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.MenuButton?>
+<?import javafx.scene.control.MenuItem?>
+<?import javafx.scene.control.SeparatorMenuItem?>
+<?import javafx.scene.image.Image?>
+<?import javafx.scene.image.ImageView?>
+<?import javafx.scene.layout.BorderPane?>
+<?import javafx.scene.layout.HBox?>
+<?import javafx.scene.layout.Region?>
+<?import javafx.scene.layout.StackPane?>
+<?import javafx.scene.layout.VBox?>
 
-<BorderPane xmlns:fx="http://javafx.com/fxml" fx:controller="main.eventmanager.AdminDashboardController">
+<BorderPane stylesheets="@../../Styles/style.css" xmlns:fx="http://javafx.com/fxml/1" xmlns="http://javafx.com/javafx/23.0.1" fx:controller="main.eventmanager.AdminDashboardController">
     <!-- Top nav -->
     <top>
         <HBox spacing="20" style="-fx-background-color: #2C3E50; -fx-padding: 15;">
             <children>
-                <ImageView fitHeight="44.0" fitWidth="87.0">
+                <ImageView fitHeight="44.0" fitWidth="115.0">
                     <image>
                         <Image url="@../../images/logo-transparent.png" />
                     </image>
                 </ImageView>
-                <Label prefHeight="46.0" prefWidth="151.0"
-                       styleClass="label-title"
-                       stylesheets="@../../Styles/style.css"
-                       text="Event Manager" />
+                <Label prefHeight="46.0" prefWidth="216.0" style="-fx-text-fill: white;" styleClass="label-title" stylesheets="@../../Styles/style.css" text="Event Manager" />
                 <Region HBox.hgrow="ALWAYS" />
-                <Label fx:id="welcomeLabel" prefHeight="53.0" prefWidth="165.0"
-                       styleClass="Label_greeting"
-                       stylesheets="@../../Styles/style.css"
-                       text="Hello, Admin!" />
-                <MenuButton prefHeight="50.0" prefWidth="135.0"
-                            styleClass="button"
-                            stylesheets="@../../Styles/style.css"
-                            text="Menu">
+                <Label fx:id="welcomeLabel" prefHeight="53.0" prefWidth="165.0" styleClass="Label_greeting" stylesheets="@../../Styles/style.css" text="Hello, Admin!" />
+                <MenuButton prefHeight="50.0" prefWidth="135.0" styleClass="button" stylesheets="@../../Styles/style.css" text="Menu">
                     <items>
                         <MenuItem fx:id="homeMenuItem" onAction="#onMenuClick" text="Home" />
                         <MenuItem fx:id="browseEventsMenuItem" onAction="#onMenuClick" text="Available Events" />
@@ -47,19 +45,18 @@
 
     <!-- Side menu for dashboard operations -->
     <left>
-        <VBox spacing="10" styleClass="DSidebar" stylesheets="@../../Styles/style.css" prefWidth="200" alignment="TOP_CENTER">
+        <VBox alignment="TOP_CENTER" prefWidth="200" spacing="50.0" styleClass="DSidebar" stylesheets="@../../Styles/style.css">
             <children>
-                <Button text="View All Users" onAction="#handleUserView" styleClass="DMenuButton"/>
-                <Button text="Feedbacks" onAction="#handleFeedbackView" styleClass="DMenuButton"/>
-                <Button text="Event Attendees" onAction="#handleAttendeesView" styleClass="DMenuButton"/>
-                <Button text="Statistics" onAction="#handleStatsView" styleClass="DMenuButton"/>
+                <Button onAction="#handleUserView" prefHeight="40.0" prefWidth="150.0" styleClass="DMenuButton" stylesheets="@../../Styles/style.css" text="View All Users" />
+                <Button onAction="#handleFeedbackView" prefHeight="40.0" prefWidth="150.0" styleClass="DMenuButton" stylesheets="@../../Styles/style.css" text="Feedbacks" />
+                <Button onAction="#handleAttendeesView" prefHeight="40.0" prefWidth="150.0" styleClass="DMenuButton" stylesheets="@../../Styles/style.css" text="Event Attendees" />
+                <Button onAction="#handleStatsView" prefHeight="40.0" prefWidth="150.0" styleClass="DMenuButton" stylesheets="@../../Styles/style.css" text="Statistics" />
             </children>
         </VBox>
     </left>
 
     <!-- Dynamic content area -->
     <center>
-        <StackPane fx:id="contentArea" styleClass="DContentArea" stylesheets="@../../Styles/style.css"/>
+        <StackPane fx:id="contentArea" styleClass="DContentArea" stylesheets="@../../Styles/style.css" />
     </center>
 </BorderPane>
-
