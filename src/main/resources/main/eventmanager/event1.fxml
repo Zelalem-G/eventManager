@@ -3,73 +3,40 @@
 <?import javafx.scene.control.Button?>
 <?import javafx.scene.control.Label?>
 <?import javafx.scene.control.ScrollPane?>
-<?import javafx.scene.image.Image?>
 <?import javafx.scene.image.ImageView?>
 <?import javafx.scene.layout.AnchorPane?>
-<?import javafx.scene.layout.Pane?>
-<?import javafx.scene.text.Font?>
+<?import javafx.scene.layout.VBox?>
 <?import javafx.scene.text.Text?>
-<?import javafx.scene.text.TextFlow?>
 
-<AnchorPane prefHeight="330.0" prefWidth="255.0" styleClass="card-pane" stylesheets="@../../Styles/style.css" xmlns="http://javafx.com/javafx/23.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="main.eventmanager.Event1Controller">
+<AnchorPane prefHeight="400.0" prefWidth="270.0" styleClass="E-card" stylesheets="@../../Styles/style.css" xmlns="http://javafx.com/javafx/23.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="main.eventmanager.Event1Controller">
+
    <children>
-      <TextFlow layoutY="-9.0" stylesheets="@../../Styles/style.css">
+      <VBox alignment="TOP_CENTER" layoutX="10" layoutY="10" prefHeight="380.0" prefWidth="250.0" spacing="10.0" stylesheets="@../../Styles/style.css">
          <children>
-            <Pane prefHeight="339.0" prefWidth="255.0" styleClass="stackPane" stylesheets="@../../Styles/style.css">
-               <children>
-                  <ImageView fx:id="eventImage" fitHeight="146.0" fitWidth="243.0" layoutX="6.0" layoutY="13.0" pickOnBounds="true" preserveRatio="false">
-                     <image>
-                        <Image url="@../../images/event2.png" />
-                     </image>
-                  </ImageView>
-                  <Label layoutX="4.0" layoutY="206.0" style="-fx-text-fill: black;" stylesheets="@../../Styles/style.css" text="Event Name:" textFill="WHITE" wrapText="true">
-                     <font>
-                        <Font size="14.0" />
-                     </font>
-                  </Label>
-                  <Label layoutX="8.0" layoutY="233.0" style="-fx-text-fill: black;" stylesheets="@../../Styles/style.css" text="Event Date:" textFill="WHITE">
-                     <font>
-                        <Font size="14.0" />
-                     </font>
-                  </Label>
-                  <Label layoutX="4.0" layoutY="259.0" style="-fx-text-fill: black;" stylesheets="@../../Styles/style.css" text="Event Location:" textFill="WHITE">
-                     <font>
-                        <Font size="14.0" />
-                     </font>
-                  </Label>
-                  <Label layoutX="6.0" layoutY="285.0" style="-fx-text-fill: black;" stylesheets="@../../Styles/style.css" text="Description:" textFill="WHITE">
-                     <font>
-                        <Font size="14.0" />
-                     </font>
-                  </Label>
-                  <Button fx:id="registrationButton" layoutX="146.0" layoutY="158.0" mnemonicParsing="false" onAction="#handleRegistration" prefHeight="40.0" prefWidth="107.0" stylesheets="@../../Styles/style.css" text="Register" textFill="GREEN">
-                     <font>
-                        <Font size="13.0" />
-                     </font>
-                  </Button>
-                  <Label fx:id="eventName" layoutX="110.0" layoutY="206.0" style="-fx-text-fill: #00E5FF;" styleClass="label-subtitle" stylesheets="@../../Styles/style.css" text="Event Name" textFill="WHITE">
-                     <font>
-                        <Font size="14.0" />
-                     </font>
-                  </Label>
-                  <Label fx:id="eventDate" layoutX="107.0" layoutY="233.0" style="-fx-text-fill: #7E57C2;" styleClass="label-highlight" stylesheets="@../../Styles/style.css" text="Event Date" textFill="WHITE">
-                     <font>
-                        <Font size="14.0" />
-                     </font>
-                  </Label>
-                  <Label fx:id="eventLocation" layoutX="110.0" layoutY="259.0" style="-fx-text-fill: black;" styleClass="label-highlight" stylesheets="@../../Styles/style.css" text="Event Location:" textFill="WHITE">
-                     <font>
-                        <Font size="14.0" />
-                     </font>
-                  </Label>
-                  <ScrollPane fx:id="descriptionScrollPane" layoutX="77.0" layoutY="277.0" prefHeight="36.0" prefWidth="172.0">
-                     <content>
-                        <Text fx:id="description" onMouseClicked="#expandDescription" strokeType="OUTSIDE" strokeWidth="0.0" />
-                     </content>
-                  </ScrollPane>
-               </children>
-            </Pane>
+
+            <!-- Event Image -->
+            <ImageView fx:id="eventImage" fitHeight="140.0" fitWidth="240.0" preserveRatio="false" styleClass="E-image" />
+
+            <!-- Event Name -->
+            <Label fx:id="eventName" styleClass="E-title" stylesheets="@../../Styles/style.css" text="Event Name" />
+
+            <!-- Event Date -->
+            <Label fx:id="eventDate" styleClass="E-subtitle" stylesheets="@../../Styles/style.css" text="Event Date" />
+
+            <!-- Event Location -->
+            <Label fx:id="eventLocation" styleClass="E-subtitle" stylesheets="@../../Styles/style.css" text="Event Location" />
+
+            <!-- Description with scroll -->
+            <ScrollPane fx:id="descriptionScrollPane" fitToWidth="true" onMouseClicked="#expandDescription" prefHeight="60.0" prefWidth="220.0" styleClass="E-scroll" stylesheets="@../../Styles/style.css">
+               <content>
+                  <Text fx:id="description" wrappingWidth="200.0" />
+               </content>
+            </ScrollPane>
+
+            <!-- Register Button -->
+            <Button fx:id="registrationButton" onAction="#handleRegistration" prefWidth="200.0" styleClass="E-button" stylesheets="@../../Styles/style.css" text="Register" />
+
          </children>
-      </TextFlow>
+      </VBox>
    </children>
 </AnchorPane>

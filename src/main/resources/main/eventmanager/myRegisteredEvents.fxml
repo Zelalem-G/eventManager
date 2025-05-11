@@ -1,46 +1,59 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
-<?import javafx.scene.control.Button?>
 <?import javafx.scene.control.Label?>
-<?import javafx.scene.control.TableColumn?>
-<?import javafx.scene.control.TableView?>
-<?import javafx.scene.control.TextField?>
-<?import javafx.scene.layout.AnchorPane?>
-<?import javafx.scene.text.Font?>
+<?import javafx.scene.control.MenuButton?>
+<?import javafx.scene.control.MenuItem?>
+<?import javafx.scene.control.ScrollPane?>
+<?import javafx.scene.control.SeparatorMenuItem?>
+<?import javafx.scene.image.Image?>
+<?import javafx.scene.image.ImageView?>
+<?import javafx.scene.layout.BorderPane?>
+<?import javafx.scene.layout.FlowPane?>
+<?import javafx.scene.layout.HBox?>
+<?import javafx.scene.layout.Region?>
+<?import javafx.scene.layout.VBox?>
 
-<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="554.0" prefWidth="670.0" style="-fx-background-color: #032d4d;" xmlns="http://javafx.com/javafx/23.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="main.eventmanager.MyRegisteredEventController" >
-   <children>
-      <AnchorPane layoutX="39.0" layoutY="94.0" prefHeight="427.0" prefWidth="564.0">
+<BorderPane stylesheets="@../../Styles/style.css" xmlns:fx="http://javafx.com/fxml/1" xmlns="http://javafx.com/javafx/23.0.1" fx:controller="main.eventmanager.MyRegisteredEventController">
+
+   <!-- Top Navigation Bar -->
+   <top>
+      <HBox fx:id="navBar" styleClass="R-navBar" stylesheets="@../../Styles/style.css">
          <children>
-            <TableView fx:id="userTableView" layoutY="49.0" prefHeight="378.0" prefWidth="573.0" style="-fx-background-color: WHITE;">
-              <columns>
-                <TableColumn fx:id="nameCol" prefWidth="142.66668319702148" text="Full Name" />
-                <TableColumn fx:id="ageCol" prefWidth="41.33331298828125" text="Age" />
-                  <TableColumn fx:id="phoneCol" prefWidth="134.66673278808594" text="Phone Number" />
-                  <TableColumn fx:id="emailCol" prefWidth="219.33334350585938" text="Email" />
-              </columns>
-            </TableView>
-            <AnchorPane layoutY="-2.0" prefHeight="51.0" prefWidth="573.0" style="-fx-background-color: teal;">
-               <children>
-                  <Label layoutX="14.0" layoutY="4.0" prefHeight="39.0" prefWidth="364.0" text="Registered user to event:" textFill="WHITE">
-                     <font>
-                        <Font size="24.0" />
-                     </font>
-                  </Label>
-                  <Label fx:id="eventName" layoutX="297.0" layoutY="-5.0" prefHeight="55.0" prefWidth="276.0" textFill="WHITE">
-                     <font>
-                        <Font size="24.0" />
-                     </font>
-                  </Label>
-               </children>
-            </AnchorPane>
+            <ImageView fitHeight="44.0" fitWidth="181.0">
+               <image>
+                  <Image url="@../../images/logo-transparent.png" />
+               </image>
+            </ImageView>
+            <Label styleClass="R-titleLabel" text="Event Manager" />
+            <Region HBox.hgrow="ALWAYS" />
+            <Label fx:id="welcomeLabel" styleClass="R-welcomeLabel" text="Hello, User!" />
+            <MenuButton fx:id="menuButton" styleClass="R-menuButton" text="Menu">
+               <items>
+                  <MenuItem fx:id="homeMenuItem" onAction="#onMenuClick" text="Home" />
+                  <MenuItem fx:id="browseEventsMenuItem" onAction="#onMenuClick" text="Available Events" />
+                  <MenuItem fx:id="myRegisteredMenuItem" onAction="#onMenuClick" text="Registered Events" />
+                  <MenuItem fx:id="accountMenuItem" onAction="#onMenuClick" text="Account" />
+                  <SeparatorMenuItem />
+                  <MenuItem fx:id="adminEventBtn" onAction="#onMenuClick" text="Manage Events (Admin)" />
+                  <MenuItem fx:id="adminOpsBtn" onAction="#onMenuClick" text="Admin Operations" />
+                  <SeparatorMenuItem />
+                  <MenuItem fx:id="aboutMenuItem" onAction="#onMenuClick" text="About Us" />
+               </items>
+            </MenuButton>
          </children>
-      </AnchorPane>
-      <AnchorPane layoutX="140.0" layoutY="21.0">
-         <children>
-            <TextField fx:id="searchTextField" layoutY="1.0" prefHeight="39.0" prefWidth="283.0" promptText="Enter event name..." />
-            <Button fx:id="searchButton" layoutX="283.0" mnemonicParsing="false" onMouseClicked="#handleSearchButton" prefHeight="39.0" prefWidth="87.0" text="search" />
-         </children>
-      </AnchorPane>
-   </children>
-</AnchorPane>
+      </HBox>
+   </top>
+
+   <!-- Center Content -->
+   <center>
+      <ScrollPane fitToWidth="true" styleClass="R-scrollPane" stylesheets="@../../Styles/style.css">
+         <VBox styleClass="R-container" stylesheets="@../../Styles/style.css">
+            <children>
+               <Label styleClass="R-title" stylesheets="@../../Styles/style.css" text="My Registered Events" />
+               <FlowPane fx:id="eventFlowPane" styleClass="R-flowPane" stylesheets="@../../Styles/style.css" />
+            </children>
+         </VBox>
+      </ScrollPane>
+   </center>
+
+</BorderPane>

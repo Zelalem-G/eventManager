@@ -14,18 +14,17 @@ import java.io.InputStream;
 
 public class Event1Controller {
 
-    @FXML private ScrollPane descriptionScrollPane;
-    @FXML private Text description;
-    @FXML private Label eventDate;
     @FXML private ImageView eventImage;
-    @FXML private Label eventLocation;
     @FXML private Label eventName;
+    @FXML private Label eventDate;
+    @FXML private Label eventLocation;
+    @FXML private Text description;
+    @FXML private ScrollPane descriptionScrollPane;
 
-    private Event currentEvent; //  Store the event instance
+    private Event currentEvent;
 
-    // Set event data into UI
     public void setData(Event event) {
-        this.currentEvent = event; //  Save event for use in register handler
+        this.currentEvent = event;
 
         // Load and set the image
         String imagePath = event.getEventImage();
@@ -37,36 +36,31 @@ public class Event1Controller {
             System.out.println("Image not found: " + imagePath);
         }
 
-        // Set other fields
         eventName.setText(event.getEventName());
         eventDate.setText(event.getEventDate());
         eventLocation.setText(event.getEventLocation());
         description.setText(event.getDescription());
     }
 
-    // Handle register button
     @FXML
     void handleRegistration(ActionEvent event) throws IOException {
         System.out.println("ON REGISTER FOR AN EVENT BUTTON CLICKED");
 
-        //  Set the event ID in session
         if (currentEvent != null) {
             Session.setSessionEventId(currentEvent.getEventId());
             System.out.println("Registered for event ID: " + currentEvent.getEventId());
         }
 
-        //  Navigate to registration scene
         SceneController.changeScene(event, "register.fxml", "Register", Session.getUsername(), Session.getRole());
     }
 
-    // Toggle expand/collapse for description
     @FXML
     private void expandDescription() {
         double currentHeight = descriptionScrollPane.getPrefHeight();
-        if (currentHeight == 36.0) {
-            descriptionScrollPane.setPrefHeight(100.0);
+        if (currentHeight == 60.0) {
+            descriptionScrollPane.setPrefHeight(120.0);
         } else {
-            descriptionScrollPane.setPrefHeight(36.0);
+            descriptionScrollPane.setPrefHeight(60.0);
         }
     }
 }
