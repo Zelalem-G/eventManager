@@ -53,11 +53,14 @@
     -fx-letter-spacing: 1px;
 }
 .title-label {
-    -fx-background-color: rgba(255, 255, 255, 0.6);
+  /*  -fx-background-color: rgba(255, 255, 255, 0.6); */
+   -fx-letter-spacing: 1px;
+   -fx-font-weight: bold;
+   -fx-font-family: "Bookman Old Style";
     -fx-padding: 10 20;
     -fx-background-radius: 12;
-    -fx-text-fill: black;
-    -fx-font-size: 28px;
+    -fx-text-fill: white;
+    -fx-font-size: 36px;
     -fx-effect: dropshadow(gaussian, rgba(0, 0, 0, 0.1), 8, 0.2, 0, 2);
 }
 

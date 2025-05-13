@@ -21,6 +21,7 @@ public class AuthService {
 
     public static SignupResult registerUser(String username, String password,String email , String full_name , String role) {
         // INSERT user into DB
+        String hashedPassword = PasswordUtils.hashPassword(password);
         String checkUsernameQuery = "SELECT * FROM users WHERE username = ?";
         String insertQuery = "INSERT INTO users (username, password, full_name , email, role) VALUES (?, ?, ?, ?, ?)";
 
@@ -40,7 +41,7 @@ public class AuthService {
              try (PreparedStatement insertStmt = conn.prepareStatement(insertQuery)) {
 
                  insertStmt.setString(1, username);
-                 insertStmt.setString(2, password); // You can hash this later for security
+                 insertStmt.setString(2, hashedPassword);
                  insertStmt.setString(3, full_name);
                  insertStmt.setString(4, email);
                  insertStmt.setString(5, role);
@@ -72,9 +73,10 @@ public class AuthService {
 
             String storedPassword = rs.getString("password");
 
-            if (!storedPassword.equals(password)) {
+            if (!PasswordUtils.verifyPassword(password, storedPassword)) {
                 return LoginResult.WRONG_PASSWORD;
             }
+
 //            int id = rs.getInt("user_id");
             String role = rs.getString("role");
 

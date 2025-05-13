@@ -131,15 +131,17 @@ public class myAccountController {
             ResultSet rs = stmt.executeQuery();
 
             if (rs.next()) {
-                String existingPassword = rs.getString("password");
+                String storedHashedPassword = rs.getString("password");
 
-                if (!existingPassword.equals(currentPassword)) { // Simplified; normally use hashing
+                if (!PasswordUtils.verifyPassword(currentPassword, storedHashedPassword)) {
                     setPasswordStatus("Current password is incorrect.", false);
                     return;
                 }
 
+                String newHashedPassword = PasswordUtils.hashPassword(newPassword);
+
                 try (PreparedStatement updateStmt = conn.prepareStatement("UPDATE users SET password = ? WHERE user_id = ?")) {
-                    updateStmt.setString(1, newPassword); // Normally, you should hash this
+                    updateStmt.setString(1, newHashedPassword); // Normally, you should hash this
                     updateStmt.setInt(2, userId);
                     updateStmt.executeUpdate();
                     setPasswordStatus("Password changed successfully.", true);

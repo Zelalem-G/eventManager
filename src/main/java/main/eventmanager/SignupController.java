@@ -62,7 +62,7 @@ public class SignupController {
             case SUCCESS:
                 Session.setSession(username , role);
                 AuthService.setUserIDToSession(username);
-                SceneController.changeScene(event, "homePage.fxml", "Home", username, role);
+                SceneController.changeScene(event, "home.fxml", "Home", username, role);
                 return;
 
             case USERNAME_TAKEN:

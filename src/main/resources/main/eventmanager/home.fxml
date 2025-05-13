@@ -57,7 +57,7 @@
                     <children>
                         <Label styleClass="title-label" stylesheets="@../../Styles/style.css" text="Welcome to the Event Management System!" textFill="#2C3E50">
                             <font>
-                                <Font name="Segoe UI Semibold" size="24" />
+                                <Font name="Bookman Old Style" size="48.0" />
                             </font>
                         </Label>
 
