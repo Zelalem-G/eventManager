@@ -20,12 +20,12 @@
 <?import javafx.scene.layout.Region?>
 <?import javafx.scene.text.Font?>
 
-<ScrollPane maxWidth="-Infinity" prefHeight="585.0" prefWidth="671.0" xmlns="http://javafx.com/javafx/23.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="main.eventmanager.EventCRUDController">
+<ScrollPane fitToWidth="true" prefHeight="600.0" xmlns="http://javafx.com/javafx/23.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="main.eventmanager.EventCRUDController">
    <content>
-      <AnchorPane maxWidth="1529.0" prefHeight="800.0" prefWidth="729.0" styleClass="stackPane" stylesheets="@../../Styles/style.css">
+      <AnchorPane prefHeight="600.0" styleClass="stackPane" stylesheets="@../../Styles/style.css">
          <children>
 
-            <HBox prefHeight="84.0" prefWidth="1303.0" spacing="20" style="-fx-background-color: #2C3E50; -fx-padding: 15;">
+            <HBox prefHeight="84.0" prefWidth="1303.0" spacing="20" style="-fx-background-color: #2C3E50; -fx-padding: 15;" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
                <children>
                   <ImageView fitHeight="44.0" fitWidth="181.0">
                      <image>
@@ -95,8 +95,8 @@
                   </TextField>
                   <ButtonBar layoutX="-20.0" layoutY="313.0" prefHeight="40.0" prefWidth="314.0">
                      <buttons>
-                        <Button fx:id="addButton" mnemonicParsing="false" onAction="#handleAdd" text="Add" />
-                        <Button fx:id="deleteButton" mnemonicParsing="false" onAction="#handleDelete" text="Delete" />
+                        <Button fx:id="addButton" mnemonicParsing="false" onAction="#handleAdd" styleClass="E-button" stylesheets="@../../Styles/style.css" text="Add" />
+                        <Button fx:id="deleteButton" mnemonicParsing="false" onAction="#handleDelete" styleClass="deleteButton" stylesheets="@../../Styles/style.css" text="Delete" />
                         <Button fx:id="updateButton" mnemonicParsing="false" onAction="#handleUpdate" text="Update" />
                      </buttons>
                   </ButtonBar>

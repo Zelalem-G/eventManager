@@ -14,12 +14,6 @@ import javafx.scene.layout.Pane;
 import EventModel.Event;
 import javafx.scene.layout.VBox;
 
-import javafx.fxml.FXML;
-import javafx.scene.control.TextField;
-import javafx.scene.control.Button;
-import javafx.scene.layout.VBox;
-import javafx.scene.Node;
-
 
 import java.io.IOException;
 import java.net.URL;
@@ -31,7 +25,7 @@ import java.util.ArrayList;
 import java.util.List;
 import java.util.ResourceBundle;
 
-public class MainController implements Initializable {
+public class EventsController implements Initializable {
 
     @FXML
     private Pane pane;
@@ -50,6 +44,15 @@ public class MainController implements Initializable {
     @FXML
     private MenuItem adminOpsBtn;
 
+    @FXML
+    private MenuItem aboutMenuItem;
+
+    @FXML
+    private MenuItem browseEventsMenuItem;
+
+    @FXML
+    private MenuItem myRegisteredMenuItem;
+
     private MenuControllerHelper menuHelper;
 
     @FXML private TextField searchField;
@@ -58,7 +61,7 @@ public class MainController implements Initializable {
 
     @Override
     public void initialize(URL url, ResourceBundle resourceBundle) {
-        menuHelper = new MenuControllerHelper(welcomeLabel, adminEventBtn, adminOpsBtn);
+        menuHelper = new MenuControllerHelper(welcomeLabel, adminEventBtn, adminOpsBtn, aboutMenuItem, browseEventsMenuItem, myRegisteredMenuItem);
         menuHelper.initializeMenu(Session.getUsername(), Session.getRole());
 
         events = new ArrayList<>(fetchEventsFromDatabase());

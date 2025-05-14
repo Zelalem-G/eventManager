@@ -27,11 +27,20 @@ public class MyRegisteredEventController implements Initializable {
     @FXML
     private MenuItem adminOpsBtn;
 
+    @FXML
+    private MenuItem aboutMenuItem;
+
+    @FXML
+    private MenuItem browseEventsMenuItem;
+
+    @FXML
+    private MenuItem myRegisteredMenuItem;
+
     private MenuControllerHelper menuHelper;
 
     @Override
     public void initialize(URL url, ResourceBundle resourceBundle) {
-        menuHelper = new MenuControllerHelper(welcomeLabel, adminEventBtn, adminOpsBtn);
+        menuHelper = new MenuControllerHelper(welcomeLabel, adminEventBtn, adminOpsBtn, aboutMenuItem, browseEventsMenuItem, myRegisteredMenuItem);
         menuHelper.initializeMenu(Session.getUsername(), Session.getRole());
         loadRegisteredEvents();
     }

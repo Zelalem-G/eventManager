@@ -9,11 +9,17 @@ public class MenuControllerHelper {
     private final Label welcomeLabel;
     private final MenuItem adminEventBtn;
     private final MenuItem adminOpsBtn;
+    private final MenuItem aboutMenuItem;
+    private final MenuItem browseEventsMenuItem;
+    private final MenuItem myRegisteredMenuItem;
 
-    public MenuControllerHelper(Label welcomeLabel, MenuItem adminEventBtn, MenuItem adminOpsBtn) {
+    public MenuControllerHelper(Label welcomeLabel, MenuItem adminEventBtn, MenuItem adminOpsBtn, MenuItem aboutUsBtn, MenuItem browseEventsMenuItem, MenuItem myRegisteredMenuItem) {
         this.welcomeLabel = welcomeLabel;
         this.adminEventBtn = adminEventBtn;
         this.adminOpsBtn = adminOpsBtn;
+        this.aboutMenuItem = aboutUsBtn;
+        this.browseEventsMenuItem = browseEventsMenuItem;
+        this.myRegisteredMenuItem = myRegisteredMenuItem;
     }
 
     public void initializeMenu(String username, String role) {
@@ -22,6 +28,9 @@ public class MenuControllerHelper {
         boolean isAdmin = "admin".equalsIgnoreCase(role);
         adminEventBtn.setVisible(isAdmin);
         adminOpsBtn.setVisible(isAdmin);
+        aboutMenuItem.setVisible(!isAdmin);  // visible if it is not admin
+        browseEventsMenuItem.setVisible(!isAdmin);
+        myRegisteredMenuItem.setVisible(!isAdmin);
     }
 
     public void handleMenuClick(ActionEvent event) {

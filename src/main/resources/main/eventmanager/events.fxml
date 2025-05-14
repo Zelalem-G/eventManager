@@ -14,16 +14,16 @@
 <?import javafx.scene.layout.VBox?>
 <?import javafx.scene.text.Font?>
 
-<ScrollPane maxHeight="1000.0" maxWidth="1000.0" xmlns="http://javafx.com/javafx/23.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="main.eventmanager.MainController">
+<ScrollPane prefHeight="700.0" prefWidth="1300.0" xmlns="http://javafx.com/javafx/23.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="main.eventmanager.EventsController">
    <content>
-      <BorderPane prefHeight="2000.0" prefWidth="1500.0" styleClass="stackPane" stylesheets="@../../Styles/style.css">
+      <BorderPane prefHeight="700.0" prefWidth="1300.0" styleClass="stackPane" stylesheets="@../../Styles/style.css">
          <left>
-            <VBox prefHeight="1945.0" prefWidth="239.0" styleClass="stackPane" stylesheets="@../../Styles/style.css" BorderPane.alignment="CENTER">
+            <VBox prefHeight="800.0" prefWidth="239.0" styleClass="stackPane" stylesheets="@../../Styles/style.css" BorderPane.alignment="CENTER">
                <children>
                   <Pane prefHeight="55.0" prefWidth="235.0" style="-fx-background-color: gray;" stylesheets="@../../Styles/style.css">
                      <children>
-                        <Button fx:id="searchButton" layoutX="155.0" layoutY="7.0" mnemonicParsing="false" onAction="#onSearchClicked" text="Search" textFill="#1138d9" />
-                        <TextField fx:id="searchField" layoutX="10.0" layoutY="15.0" prefHeight="25.0" prefWidth="135.0" promptText="Type here to search" />
+                        <Button fx:id="searchButton" layoutX="168.0" layoutY="7.0" mnemonicParsing="false" onAction="#onSearchClicked" text="Search" textFill="#1138d9" />
+                        <TextField fx:id="searchField" layoutX="27.0" layoutY="15.0" prefHeight="25.0" prefWidth="135.0" promptText="Type here to search" />
                      </children>
                   </Pane>
                </children>
@@ -43,7 +43,7 @@
                      </font>
                   </Label>
                   <Label fx:id="welcomeLabel" layoutX="630.0" layoutY="-1.0" prefHeight="53.0" prefWidth="178.0" style="-fx-text-fill: white; -fx-font-size: 16px;" styleClass="Label_greeting" stylesheets="@../../Styles/style.css" text="Hello, User!" />
-                  <MenuButton layoutX="976.0" layoutY="4.0" prefHeight="50.0" prefWidth="135.0" style="-fx-background-color: #3498DB; -fx-text-fill: white;" styleClass="button" stylesheets="@../../Styles/style.css" text="Menu">
+                  <MenuButton layoutX="1138.0" layoutY="4.0" prefHeight="50.0" prefWidth="135.0" style="-fx-background-color: #3498DB; -fx-text-fill: white;" styleClass="button" stylesheets="@../../Styles/style.css" text="Menu">
                      <items>
                         <MenuItem fx:id="homeMenuItem" onAction="#onMenuClick" text="Home" />
                         <MenuItem fx:id="browseEventsMenuItem" onAction="#onMenuClick" text="Available Events" />
@@ -62,7 +62,7 @@
          <center>
             <ScrollPane styleClass="stackPane" stylesheets="@../../Styles/style.css" BorderPane.alignment="CENTER">
                <content>
-                  <Pane fx:id="pane" prefHeight="1400.0" prefWidth="1200.0" styleClass="R-container" stylesheets="@../../Styles/style.css">
+                  <Pane fx:id="pane" prefHeight="1400.0" prefWidth="1039.0" styleClass="R-container" stylesheets="@../../Styles/style.css">
                      <children>
                         <Label layoutX="370.0" layoutY="7.0" prefHeight="51.0" prefWidth="316.0" styleClass="R-title" stylesheets="@../../Styles/style.css" text="Availlable Events" />
                         <GridPane fx:id="myGrid" hgap="20.0" layoutX="23.0" layoutY="22.0" prefHeight="55.0" prefWidth="56.0" vgap="20.0">

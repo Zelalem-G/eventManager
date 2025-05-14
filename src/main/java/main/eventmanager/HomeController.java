@@ -24,6 +24,12 @@ public class HomeController implements Initializable {
     private Button browseEventCardBtn;
 
     @FXML
+    private Button manageEventCardBtn;
+
+    @FXML
+    private Button operationsCardBtn;
+
+    @FXML
     private Button myRegisteredCardBtn;
 
     @FXML
@@ -41,14 +47,14 @@ public class HomeController implements Initializable {
     @FXML
     private MenuItem adminOpsBtn;
 
-//    @FXML
-//    private MenuItem browseEventsBtn;
-//
-//    @FXML
-//    private MenuItem myRegisteredEventsBtn;
-//
-//    @FXML
-//    private MenuItem aboutUsBtn;
+    @FXML
+    private MenuItem browseEventsMenuItem;
+
+    @FXML
+    private MenuItem myRegisteredMenuItem;
+
+    @FXML
+    private MenuItem aboutMenuItem;
 //
 //    @FXML
 //    private VBox mainVBox; // fx:id of your VBox in FXML
@@ -61,13 +67,30 @@ public class HomeController implements Initializable {
 
     @Override
     public void initialize(URL location, ResourceBundle resources) {
-        menuHelper = new MenuControllerHelper(welcomeLabel, adminEventBtn, adminOpsBtn);
+        menuHelper = new MenuControllerHelper(welcomeLabel, adminEventBtn, adminOpsBtn, aboutMenuItem, browseEventsMenuItem, myRegisteredMenuItem);
         menuHelper.initializeMenu(Session.getUsername(), Session.getRole());
-        // Call setUserInformation here when the controller is initialized
-        //setUserInformation(Session.getUsername(), Session.getRole());
+
+        if("admin".equalsIgnoreCase(Session.getRole())){
+            aboutUsCardBtn.setVisible(false);
+            browseEventCardBtn.setVisible(false);
+            myRegisteredCardBtn.setVisible(false);
+        } else{
+            operationsCardBtn.setVisible(false);
+            manageEventCardBtn.setVisible(false);
+        }
         styleCardButtons();
     }
 
+    //  Methods for Admin
+    public void onManageEvents(ActionEvent event) {
+        System.out.println("Viewing manage events...");
+        SceneController.changeScene(event, "eventCRUD.fxml", "Manage Events", Session.getUsername(), Session.getRole());
+    }
+
+    public void onOperationsEvents(ActionEvent event) {
+        System.out.println("Viewing admin dashboard events...");
+        SceneController.changeScene(event, "AdminDashboard.fxml", "Admin operations", Session.getUsername(), Session.getRole());
+    }
 
     // Method for browsing events
     public void onBrowseEvents(ActionEvent event) {

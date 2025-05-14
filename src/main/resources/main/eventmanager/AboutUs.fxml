@@ -9,7 +9,7 @@
 
 <AnchorPane prefHeight="600.0" prefWidth="800.0" stylesheets="@../../Styles/style.css" xmlns="http://javafx.com/javafx/23.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="main.eventmanager.AboutUsController">
 
-    <VBox styleClass="vboxLayout">
+    <VBox styleClass="vboxLayout" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="160.0" AnchorPane.topAnchor="0.0">
         <!-- Back Button -->
         <HBox spacing="10.0">
             <Button onAction="#handleBack" styleClass="backButton" stylesheets="@../../Styles/style.css" text="← Back" />

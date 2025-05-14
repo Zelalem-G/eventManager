@@ -9,7 +9,7 @@
 <?import javafx.scene.layout.AnchorPane?>
 <?import javafx.scene.layout.VBox?>
 
-<AnchorPane styleClass="roott" stylesheets="@../../Styles/style.css" xmlns="http://javafx.com/javafx/23.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="main.eventmanager.myAccountController">
+<AnchorPane prefHeight="600.0" styleClass="roott" stylesheets="@../../Styles/style.css" xmlns="http://javafx.com/javafx/23.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="main.eventmanager.myAccountController">
     <VBox alignment="TOP_CENTER" spacing="20" styleClass="container-A" stylesheets="@../../Styles/style.css" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
 
         <Button onAction="#handleBack" styleClass="button-A" stylesheets="@../../Styles/style.css" text="← Back to Home" />

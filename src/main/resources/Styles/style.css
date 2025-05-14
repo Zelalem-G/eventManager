@@ -206,6 +206,16 @@
     -fx-padding: 10px 20px;
 }
 
+.deleteButton {
+    -fx-background-color: red;
+    -fx-text-fill: white;
+    -fx-font-weight: bold;
+    -fx-padding: 10px 20px;
+}
+.deleteButton:hover {
+    -fx-background-color: #ff5722;
+}
+
 /* Custom Button for "Submit Feedback" button */
 .submitFeedbackButton {
     -fx-background-color: #4caf50;

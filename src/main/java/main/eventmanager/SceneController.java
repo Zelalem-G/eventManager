@@ -84,6 +84,7 @@ public class SceneController {
             Scene scene = new Scene(root);
             stage.setScene(scene);
             stage.setTitle(title);
+            stage.centerOnScreen(); // to center
             stage.show();
 
         } catch (IOException e) {

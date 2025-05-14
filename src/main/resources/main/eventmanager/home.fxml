@@ -28,7 +28,7 @@
                 </ImageView>
                 <Label prefHeight="46.0" prefWidth="151.0" style="-fx-text-fill: white; -fx-font-size: 20px; -fx-font-weight: bold;" styleClass="label-title" stylesheets="@../../Styles/style.css" text="Event Manager" />
                 <Region HBox.hgrow="ALWAYS" />
-                <Label fx:id="welcomeLabel" prefHeight="53.0" prefWidth="165.0" style="-fx-text-fill: white; -fx-font-size: 16px;" styleClass="Label_greeting" stylesheets="@../../Styles/style.css" text="Hello, User!" />
+                <Label fx:id="welcomeLabel" prefHeight="53.0" prefWidth="203.0" style="-fx-text-fill: white; -fx-font-size: 16px;" styleClass="Label_greeting" stylesheets="@../../Styles/style.css" text="Hello, User!" />
                 <MenuButton prefHeight="50.0" prefWidth="135.0" style="-fx-background-color: #3498DB; -fx-text-fill: white;" styleClass="button" stylesheets="@../../Styles/style.css" text="Menu">
                     <items>
                         <MenuItem fx:id="homeMenuItem" onAction="#onMenuClick" text="Home" />
@@ -70,6 +70,8 @@
                         <HBox alignment="CENTER" prefHeight="122.0" prefWidth="596.0" spacing="20">
                             <Button fx:id="browseEventCardBtn" onAction="#onBrowseEvents" prefHeight="57.0" prefWidth="150" styleClass="card-button" stylesheets="@../../Styles/style.css" text="Browse Events" />
                             <Button fx:id="myRegisteredCardBtn" onAction="#onMyRegisteredEvents" prefHeight="57.0" prefWidth="150" styleClass="card-button" stylesheets="@../../Styles/style.css" text="My Registered" />
+                            <Button fx:id="manageEventCardBtn" onAction="#onManageEvents" prefHeight="57.0" prefWidth="150" styleClass="card-button" stylesheets="@../../Styles/style.css" text="Manage Events" />
+                            <Button fx:id="operationsCardBtn" onAction="#onOperationsEvents" prefHeight="57.0" prefWidth="150" styleClass="card-button" stylesheets="@../../Styles/style.css" text="Operations" />
                         </HBox>
 
                         <HBox alignment="CENTER" prefHeight="91.0" prefWidth="596.0" spacing="20">
