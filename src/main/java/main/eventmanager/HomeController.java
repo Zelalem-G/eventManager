@@ -65,6 +65,7 @@ public class HomeController implements Initializable {
 
     private MenuControllerHelper menuHelper;
 
+
     @Override
     public void initialize(URL location, ResourceBundle resources) {
         menuHelper = new MenuControllerHelper(welcomeLabel, adminEventBtn, adminOpsBtn, aboutMenuItem, browseEventsMenuItem, myRegisteredMenuItem);
@@ -72,13 +73,22 @@ public class HomeController implements Initializable {
 
         if("admin".equalsIgnoreCase(Session.getRole())){
             aboutUsCardBtn.setVisible(false);
+            aboutUsCardBtn.setManaged(false);
+
             browseEventCardBtn.setVisible(false);
+            browseEventCardBtn.setManaged(false);
+
             myRegisteredCardBtn.setVisible(false);
+            myRegisteredCardBtn.setManaged(false);
         } else{
             operationsCardBtn.setVisible(false);
+            operationsCardBtn.setManaged(false);
+
             manageEventCardBtn.setVisible(false);
+            manageEventCardBtn.setManaged(false);
         }
-        styleCardButtons();
+//        styleCardButtons();
+
     }
 
     //  Methods for Admin
@@ -124,12 +134,20 @@ public class HomeController implements Initializable {
         }
     }
 
-    public void styleCardButtons() {
-        aboutUsCardBtn.setStyle("-fx-background-color: linear-gradient(to bottom right, #667eea, #764ba2);");
-        myRegisteredCardBtn.setStyle("-fx-background-color: linear-gradient(to bottom right, #f7971e, #ffd200);");
-        browseEventCardBtn.setStyle("-fx-background-color: linear-gradient(to bottom right, #00c6ff, #0072ff);");
-        accSettingCardBtn.setStyle("-fx-background-color: linear-gradient(to bottom right, #43cea2, #185a9d);");
-    }
+//    public void styleCardButtons() {
+//        aboutUsCardBtn.setStyle("-fx-background-color: linear-gradient(to bottom right, #667eea, #764ba2);");
+//        myRegisteredCardBtn.setStyle("-fx-background-color: linear-gradient(to bottom right, #f7971e, #ffd200);");
+//        browseEventCardBtn.setStyle("-fx-background-color: linear-gradient(to bottom right, #00c6ff, #0072ff);");
+//        accSettingCardBtn.setStyle("-fx-background-color: linear-gradient(to bottom right, #43cea2, #185a9d);");
+//    }
+public void styleCardButtons() {
+    aboutUsCardBtn.setStyle("-fx-background-color: linear-gradient(to bottom right, #43cea2, #185a9d);");
+    myRegisteredCardBtn.setStyle("-fx-background-color: linear-gradient(to bottom right, #43cea2, #185a9d);");
+    browseEventCardBtn.setStyle("-fx-background-color: linear-gradient(to bottom right, #43cea2, #185a9d);");
+    accSettingCardBtn.setStyle("-fx-background-color: linear-gradient(to bottom right, #43cea2, #185a9d);");
+    manageEventCardBtn.setStyle("-fx-background-color: linear-gradient(to bottom right, #00c6ff, #0072ff);");
+    operationsCardBtn.setStyle("-fx-background-color: linear-gradient(to bottom right, #00c6ff, #0072ff);");
+}
 
 
 }

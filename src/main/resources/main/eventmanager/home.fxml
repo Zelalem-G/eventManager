@@ -48,14 +48,14 @@
 
     <!-- Center content -->
     <center>
-        <StackPane fx:id="stackPane" styleClass="stackPane" stylesheets="@../../Styles/style.css">
+        <StackPane fx:id="stackPane" styleClass="root-pane-gradient-3" stylesheets="@../../Styles/style.css">
             <children>
                 <VBox fx:id="mainVBox" alignment="TOP_CENTER" maxHeight="Infinity" maxWidth="Infinity" spacing="20">
                     <padding>
                         <Insets bottom="20" left="20" right="20" top="20" />
                     </padding>
                     <children>
-                        <Label styleClass="title-label" stylesheets="@../../Styles/style.css" text="Welcome to the Event Management System!" textFill="#2C3E50">
+                        <Label style="-fx-text-fill: black;" styleClass="title-label" stylesheets="@../../Styles/style.css" text="Welcome to the Event Management System!" textFill="#2C3E50">
                             <font>
                                 <Font name="Bookman Old Style" size="48.0" />
                             </font>
@@ -65,18 +65,112 @@
                             <font>
                                 <Font name="Arial" size="16" />
                             </font>
+                            <VBox.margin>
+                                <Insets bottom="50.0" />
+                            </VBox.margin>
                         </Label>
 
-                        <HBox alignment="CENTER" prefHeight="122.0" prefWidth="596.0" spacing="20">
-                            <Button fx:id="browseEventCardBtn" onAction="#onBrowseEvents" prefHeight="57.0" prefWidth="150" styleClass="card-button" stylesheets="@../../Styles/style.css" text="Browse Events" />
-                            <Button fx:id="myRegisteredCardBtn" onAction="#onMyRegisteredEvents" prefHeight="57.0" prefWidth="150" styleClass="card-button" stylesheets="@../../Styles/style.css" text="My Registered" />
-                            <Button fx:id="manageEventCardBtn" onAction="#onManageEvents" prefHeight="57.0" prefWidth="150" styleClass="card-button" stylesheets="@../../Styles/style.css" text="Manage Events" />
-                            <Button fx:id="operationsCardBtn" onAction="#onOperationsEvents" prefHeight="57.0" prefWidth="150" styleClass="card-button" stylesheets="@../../Styles/style.css" text="Operations" />
+                        <HBox alignment="CENTER" prefHeight="122.0" prefWidth="596.0" spacing="50.0">
+                            <!-- Browse Events Button -->
+                            <Button fx:id="browseEventCardBtn" onAction="#onBrowseEvents" prefHeight="120.0" prefWidth="250" styleClass="card-button-" stylesheets="@../../Styles/style.css">
+                                <graphic>
+                                    <HBox alignment="CENTER_LEFT" spacing="12" styleClass="HBox">
+                                        <ImageView fitHeight="36" fitWidth="36" preserveRatio="true">
+                                            <Image url="@../../images/calendar.png" />
+                                        </ImageView>
+                                        <VBox spacing="4" styleClass="VBox" stylesheets="@../../Styles/style.css">
+                                            <Label styleClass="button-title-" stylesheets="@../../Styles/style.css" text="Browse Events" />
+                                            <Label styleClass="button-subtitle-" stylesheets="@../../Styles/style.css" text="Discover New Experiences" />
+                                            <Label styleClass="button-description-" stylesheets="@../../Styles/style.css" text="Explore concerts, workshops, and more." />
+                                        </VBox>
+                                    </HBox>
+                                </graphic>
+                            </Button>
+
+                            <!-- My Registered Button -->
+                            <Button fx:id="myRegisteredCardBtn" onAction="#onMyRegisteredEvents" prefHeight="120.0" prefWidth="250" styleClass="card-button-" stylesheets="@../../Styles/style.css">
+                                <graphic>
+                                    <HBox alignment="CENTER_LEFT" spacing="12" styleClass="HBox" stylesheets="@../../Styles/style.css">
+                                        <ImageView fitHeight="36" fitWidth="36" preserveRatio="true">
+                                            <Image url="@../../images/ticket.png" />
+                                        </ImageView>
+                                        <VBox spacing="4" stylesheets="@../../Styles/style.css">
+                                            <Label styleClass="button-title-" stylesheets="@../../Styles/style.css" text="My Registered" />
+                                            <Label styleClass="button-subtitle-" stylesheets="@../../Styles/style.css" text="Your Event Passes" />
+                                            <Label styleClass="button-description-" stylesheets="@../../Styles/style.css" text="View registered events and cancle events." />
+                                        </VBox>
+                                    </HBox>
+                                </graphic>
+                            </Button>
+
+                            <!-- Manage Events Button -->
+                            <Button fx:id="manageEventCardBtn" onAction="#onManageEvents" prefHeight="120.0" prefWidth="250" styleClass="card-button-" stylesheets="@../../Styles/style.css">
+                                <graphic>
+                                    <HBox alignment="CENTER_LEFT" spacing="12">
+                                        <ImageView fitHeight="36" fitWidth="36" preserveRatio="true">
+                                            <Image url="@../../images/settings.png" />
+                                        </ImageView>
+                                        <VBox spacing="4">
+                                            <Label styleClass="button-title-" stylesheets="@../../Styles/style.css" text="Manage Events" />
+                                            <Label styleClass="button-subtitle-" stylesheets="@../../Styles/style.css" text="Host Tools" />
+                                            <Label styleClass="button-description-" stylesheets="@../../Styles/style.css" text="Add, update and delete events." />
+                                        </VBox>
+                                    </HBox>
+                                </graphic>
+                            </Button>
+
+                            <!-- Operations Button -->
+                            <Button fx:id="operationsCardBtn" onAction="#onOperationsEvents" prefHeight="120.0" prefWidth="250" styleClass="card-button-" stylesheets="@../../Styles/style.css">
+                                <graphic>
+                                    <HBox alignment="CENTER_LEFT" spacing="12">
+                                        <ImageView fitHeight="36" fitWidth="36" preserveRatio="true">
+                                            <Image url="@../../images/dashboard.png" />
+                                        </ImageView>
+                                        <VBox spacing="4">
+                                            <Label styleClass="button-title-" stylesheets="@../../Styles/style.css" text="Operations" />
+                                            <Label styleClass="button-subtitle-" stylesheets="@../../Styles/style.css" text="Admin Dashboard" />
+                                            <Label styleClass="button-description-" stylesheets="@../../Styles/style.css" text="view users, attendees, reports and analytics." />
+                                        </VBox>
+                                    </HBox>
+                                </graphic>
+                            </Button>
+                            <VBox.margin>
+                                <Insets bottom="50.0" />
+                            </VBox.margin>
                         </HBox>
 
-                        <HBox alignment="CENTER" prefHeight="91.0" prefWidth="596.0" spacing="20">
-                            <Button fx:id="aboutUsCardBtn" onAction="#onAbout" prefHeight="56.0" prefWidth="159.0" style="-fx-text-fill: white;" styleClass="card-button" stylesheets="@../../Styles/style.css" text="About Us" />
-                            <Button fx:id="accSettingCardBtn" onAction="#onAccount" prefHeight="57.0" prefWidth="159.0" styleClass="card-button" stylesheets="@../../Styles/style.css" text="Account Settings" />
+                        <HBox alignment="CENTER" prefHeight="91.0" prefWidth="596.0" spacing="50.0">
+                            <!-- About Us Button -->
+                            <Button fx:id="aboutUsCardBtn" onAction="#onAbout" prefHeight="120.0" prefWidth="250" styleClass="card-button-" stylesheets="@../../Styles/style.css">
+                                <graphic>
+                                    <HBox alignment="CENTER_LEFT" spacing="15">
+                                        <ImageView fitHeight="36" fitWidth="36" preserveRatio="true">
+                                            <Image url="@../../images/feedback.png" />
+                                        </ImageView>
+                                        <VBox spacing="6">
+                                            <Label styleClass="button-title-" stylesheets="@../../Styles/style.css" text="About Us" />
+                                            <Label styleClass="button-subtitle-" stylesheets="@../../Styles/style.css" text="Give feedback" />
+                                            <Label styleClass="button-description-" stylesheets="@../../Styles/style.css" text="Learn about our mission and team members." />
+                                        </VBox>
+                                    </HBox>
+                                </graphic>
+                            </Button>
+
+                            <!-- Account Settings Button -->
+                            <Button fx:id="accSettingCardBtn" onAction="#onAccount" prefHeight="120.0" prefWidth="250" styleClass="card-button-" stylesheets="@../../Styles/style.css">
+                                <graphic>
+                                    <HBox alignment="CENTER_LEFT" spacing="15">
+                                        <ImageView fitHeight="36" fitWidth="36" preserveRatio="true">
+                                            <Image url="@../../images/user.png" />
+                                        </ImageView>
+                                        <VBox spacing="6">
+                                            <Label styleClass="button-title-" stylesheets="@../../Styles/style.css" text="Account Settings" />
+                                            <Label styleClass="button-subtitle-" stylesheets="@../../Styles/style.css" text="Manage Profile" />
+                                            <Label styleClass="button-description-" stylesheets="@../../Styles/style.css" text="Update password, email, and LOGOUT settings." />
+                                        </VBox>
+                                    </HBox>
+                                </graphic>
+                            </Button>
                         </HBox>
                     </children>
                 </VBox>

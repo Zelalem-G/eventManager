@@ -715,3 +715,61 @@
     -fx-background-radius: 6px;
 }
 
+.root-pane-gradient-3 {
+    -fx-background-color: linear-gradient(to right, #f8f9fa, #e9ecef);
+        -fx-effect: dropshadow(three-pass-box, rgba(0,0,0,0.1), 10, 0, 0, 0);
+
+}
+
+/* Card Button Base Style */
+.card-button- {
+    -fx-background-color: #ffffff;
+    -fx-border-color: #e0e0e0;
+    -fx-border-width: 1px;
+    -fx-border-radius: 8px;
+    -fx-background-radius: 8px;
+    -fx-padding: 20px; /* Increased padding */
+    -fx-effect: dropshadow(three-pass-box, rgba(0,0,0,0.1), 6, 0, 0, 2);
+    -fx-cursor: hand;
+    -fx-content-display: graphic-only; /* Ensures only graphic content shows */
+}
+.card-button-:hover {
+    -fx-background-color: #ffffff;
+    -fx-effect: dropshadow(three-pass-box, rgba(0,0,0,0.4), 12, 0, 0, 6);
+    -fx-scale-x: 1.03;
+    -fx-scale-y: 1.03;
+}
+
+/* Text Wrapping Improvements */
+.button-description- {
+    -fx-font-size: 11px;
+    -fx-text-fill: #666666;
+    -fx-wrap-text: true;
+    -fx-max-width: 200px; /* Allows text to wrap within this width */
+    -fx-alignment: top-left;
+}
+
+/* Spacing Adjustments */
+.HBox {
+    -fx-spacing: 15px; /* Increased spacing between icon and text */
+}
+
+.VBox {
+    -fx-spacing: 6px; /* Increased vertical spacing between labels */
+}
+
+/* Existing button styles remain the same */
+.button-title- {
+    -fx-font-size: 16px;
+    -fx-font-weight: bold;
+    -fx-text-fill: #2c3e50;
+
+ }
+.button-subtitle- {
+    -fx-font-size: 12px;
+    -fx-text-fill: #7f8c8d;
+}
+* Icon Styling */
+.image-view {
+    -fx-opacity: 0.9;
+}

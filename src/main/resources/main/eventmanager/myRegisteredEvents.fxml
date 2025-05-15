@@ -13,7 +13,7 @@
 <?import javafx.scene.layout.Region?>
 <?import javafx.scene.layout.VBox?>
 
-<BorderPane stylesheets="@../../Styles/style.css" xmlns:fx="http://javafx.com/fxml/1" xmlns="http://javafx.com/javafx/23.0.1" fx:controller="main.eventmanager.MyRegisteredEventController">
+<BorderPane stylesheets="@../../Styles/style.css" xmlns="http://javafx.com/javafx/23.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="main.eventmanager.MyRegisteredEventController">
 
    <!-- Top Navigation Bar -->
    <top>
@@ -46,7 +46,7 @@
 
    <!-- Center Content -->
    <center>
-      <ScrollPane fitToWidth="true" styleClass="R-scrollPane" stylesheets="@../../Styles/style.css">
+      <ScrollPane fitToWidth="true" prefHeight="500.0" styleClass="R-scrollPane" stylesheets="@../../Styles/style.css">
          <VBox styleClass="R-container" stylesheets="@../../Styles/style.css">
             <children>
                <Label styleClass="R-title" stylesheets="@../../Styles/style.css" text="My Registered Events" />
