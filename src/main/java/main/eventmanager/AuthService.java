@@ -94,27 +94,6 @@ public class AuthService {
         }
     }
 
-    public static int getUserId(String username) {
-        // SELECT user_id FROM DB
-        String query = "SELECT id FROM users WHERE username = ?";
-
-        try (Connection conn = DBUtils.getConnection();
-             PreparedStatement stmt = conn.prepareStatement(query)) {
-
-            stmt.setString(1, username);
-            ResultSet rs = stmt.executeQuery();
-
-            if (rs.next()) {
-                return rs.getInt("id");
-            }
-
-        } catch (SQLException e) {
-            System.out.println(e.getMessage());
-            e.printStackTrace();
-        }
-
-        return -1;
-    }
 
     public static boolean setUserIDToSession(String username) {
         // SELECT role FROM DB
@@ -140,46 +119,4 @@ public class AuthService {
         return false;
     }
 
-    public static String getUserRole(String username) {
-        // SELECT role FROM DB
-        String query = "SELECT role FROM users WHERE username = ?";
-
-        try (Connection conn = DBUtils.getConnection();
-             PreparedStatement stmt = conn.prepareStatement(query)) {
-
-            stmt.setString(1, username);
-            ResultSet rs = stmt.executeQuery();
-
-            if (rs.next()) {
-                return rs.getString("role");
-            }
-
-        } catch (SQLException e) {
-            System.out.println(e.getMessage());
-            e.printStackTrace();
-        }
-
-        return null;
-    }
-
-    public static String getUsernameById(int id) {
-        String query = "SELECT username FROM users WHERE id = ?";
-
-        try (Connection conn = DBUtils.getConnection();
-             PreparedStatement stmt = conn.prepareStatement(query)) {
-
-            stmt.setInt(1, id);
-            ResultSet rs = stmt.executeQuery();
-
-            if (rs.next()) {
-                return rs.getString("username");
-            }
-
-        } catch (SQLException e) {
-            System.out.println(e.getMessage());
-            e.printStackTrace();
-        }
-
-        return null;
-    }
 }

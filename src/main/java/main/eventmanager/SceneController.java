@@ -58,19 +58,9 @@ public class SceneController {
             FXMLLoader loader = new FXMLLoader(SceneController.class.getResource(fxmlFile));
             Parent root = loader.load();
 
-            Object controller = loader.getController();
-
-            // Dynamically call setUserInformation if the controller supports it
-            try {
-                controller.getClass()
-                        .getMethod("setUserInformation", String.class, String.class)
-                        .invoke(controller, username, role);
-            } catch (Exception ignored) {
-                // The method doesn't exist or couldn't be called, safe to ignore
-            }
-
             Stage stage;
 
+            //button clicks
             if (event.getSource() instanceof Node) {
                 stage = (Stage) ((Node) event.getSource()).getScene().getWindow();
             } else {

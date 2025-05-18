@@ -50,11 +50,4 @@ public class Events {
     public String getDescription() { return description.get(); }
     public void setDescription(String newDescription) { description.set(newDescription); }
 
-    @Override
-    public String toString() {
-        return String.format(
-                "Event[id=%s, eventName=%s, location=%s, eventDate=%s, imagePath=%s, description=%s]",
-                getId(), getEventName(), getLocation(), getEventDate(), getImagePath(), getDescription()
-        );
-    }
 }

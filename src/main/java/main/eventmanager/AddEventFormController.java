@@ -40,7 +40,7 @@ public class AddEventFormController implements Initializable {
     private MenuItem adminOpsBtn;
 
     @FXML
-    private MenuItem aboutUsBtn;
+    private MenuItem aboutMenuItem;
 
     @FXML
     private MenuItem browseEventsMenuItem;
@@ -52,10 +52,9 @@ public class AddEventFormController implements Initializable {
 
     @Override
     public void initialize(URL location, ResourceBundle resources) {
-        menuHelper = new MenuControllerHelper(welcomeLabel, adminEventBtn, adminOpsBtn, aboutUsBtn, browseEventsMenuItem, myRegisteredMenuItem);
+        menuHelper = new MenuControllerHelper(welcomeLabel, adminEventBtn, adminOpsBtn, aboutMenuItem, browseEventsMenuItem, myRegisteredMenuItem);
         menuHelper.initializeMenu(Session.getUsername(), Session.getRole());
 
-        // your other init logic
     }
 
     @FXML

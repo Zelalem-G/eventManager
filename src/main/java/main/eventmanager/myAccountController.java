@@ -159,13 +159,13 @@ public class myAccountController {
 
     private void setPasswordStatus(String message, boolean success) {
         ApasswordStatus.setText(message);
-        ApasswordStatus.setStyle(success ? "-fx-text-fill: green;" : "-fx-text-fill: red;");
+        ApasswordStatus.setStyle(success ? "-fx-text-fill: #39e75f;" : "-fx-text-fill: red;");
     }
 
     @FXML
     private void logout(ActionEvent event) {
         // Clear the user session data
-        Session.clearUserData(); // Assuming you have a method like this in the Session class
+        Session.clearUserData();
 
         // Change scene to the login page
         SceneController.changeScene(event, "login.fxml", "Login", "", "");
@@ -184,6 +184,6 @@ public class myAccountController {
 
     private void showSuccess(String message) {
         AstatusLabel.setText(message);
-        AstatusLabel.setStyle("-fx-text-fill: #AAFF00;");
+        AstatusLabel.setStyle("-fx-text-fill: #39e75f;");
     }
 }

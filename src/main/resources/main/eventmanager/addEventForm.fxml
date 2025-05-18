@@ -19,11 +19,11 @@
 <?import javafx.scene.layout.VBox?>
 <?import javafx.scene.text.Font?>
 
-<ScrollPane fitToHeight="true" fitToWidth="true" maxHeight="-Infinity" maxWidth="800.0" minHeight="-Infinity" minViewportWidth="840.0" minWidth="-Infinity" prefHeight="400.0" prefViewportWidth="800.0" prefWidth="498.0" xmlns:fx="http://javafx.com/fxml/1" xmlns="http://javafx.com/javafx/23.0.1" fx:controller="main.eventmanager.AddEventFormController">
+<ScrollPane fitToHeight="true" fitToWidth="true" minHeight="-Infinity" minWidth="-Infinity" prefHeight="500.0" prefWidth="1000.0" xmlns="http://javafx.com/javafx/23.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="main.eventmanager.AddEventFormController">
   <content>
-    <AnchorPane minHeight="-Infinity" minWidth="-Infinity" prefHeight="639.0" prefWidth="1100.0" styleClass="stackPane" stylesheets="@../../Styles/style.css">
+    <AnchorPane minHeight="-Infinity" minWidth="-Infinity" prefHeight="639.0" prefWidth="1100.0" styleClass="root-pane-gradient-3" stylesheets="@../../Styles/style.css">
          <children>
-            <HBox maxWidth="1.7976931348623157E308" prefHeight="84.0" prefWidth="985.0" spacing="20" style="-fx-background-color: #2C3E50; -fx-padding: 15;">
+            <HBox prefHeight="84.0" prefWidth="1000.0" spacing="20" style="-fx-background-color: #2C3E50; -fx-padding: 15;" AnchorPane.bottomAnchor="555.3333333333334" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="114.66666666666663" AnchorPane.topAnchor="0.0">
                <children>
                   <ImageView fitHeight="44.0" fitWidth="181.0">
                      <image>
@@ -36,8 +36,8 @@
                   <MenuButton prefHeight="50.0" prefWidth="152.0" style="-fx-background-color: #3498DB; -fx-text-fill: white;" styleClass="button" stylesheets="@../../Styles/style.css" text="Menu">
                      <items>
                         <MenuItem fx:id="homeMenuItem" onAction="#onMenuClick" text="Home" />
-                        <MenuItem fx:id="browseEventsMenuItem" onAction="#onMenuClick"  text="Available Events" />
-                        <MenuItem fx:id="myRegisteredMenuItem"  onAction="#onMenuClick" text="Registered Events" />
+                        <MenuItem fx:id="browseEventsMenuItem" onAction="#onMenuClick" text="Available Events" />
+                        <MenuItem fx:id="myRegisteredMenuItem" onAction="#onMenuClick" text="Registered Events" />
                         <MenuItem fx:id="accountMenuItem" onAction="#onMenuClick" text="Account" />
                         <SeparatorMenuItem />
                         <MenuItem fx:id="adminEventBtn" onAction="#onMenuClick" text="Manage Events (Admin)" />
@@ -48,13 +48,13 @@
                   </MenuButton>
                </children>
             </HBox>
-            <VBox alignment="CENTER" layoutX="6.0" layoutY="108.0" maxWidth="1.7976931348623157E308" prefHeight="260.0" prefWidth="907.0">
+            <VBox alignment="CENTER" layoutX="6.0" layoutY="108.0" prefHeight="260.0" prefWidth="907.0">
                <children>
-                  <BorderPane maxWidth="1.7976931348623157E308" prefHeight="200.0" prefWidth="200.0">
+                  <BorderPane prefHeight="200.0" prefWidth="200.0">
                      <center>
                         <AnchorPane prefHeight="299.0" prefWidth="707.0" BorderPane.alignment="CENTER">
                            <children>
-                              <Label prefHeight="35.0" prefWidth="350.0" style="-fx-text-fill: white;" styleClass="label-title" stylesheets="@../../Styles/style.css" text="Event Entry Form">
+                              <Label prefHeight="35.0" prefWidth="350.0" style="-fx-text-fill: black;" styleClass="label-title" stylesheets="@../../Styles/style.css" text="Event Entry Form">
                                  <font>
                                     <Font name="Segoe UI Semibold" size="18.0" />
                                  </font>
@@ -83,12 +83,12 @@
                               <TextField fx:id="imagePathTextfield" layoutX="14.0" layoutY="232.0" prefHeight="25.0" prefWidth="242.0" promptText="/path/image_name" style="-fx-background-color: E6ECF0;" />
                               <TextArea fx:id="eventDescriptionTextArea" layoutX="325.0" layoutY="70.0" prefHeight="39.0" prefWidth="242.0" promptText="Description of the event" />
                               <TextField fx:id="locationTextfield" layoutX="14.0" layoutY="155.0" prefHeight="25.0" prefWidth="242.0" promptText="Where the event is located" style="-fx-background-color: E6ECF0;" />
-                              <Label layoutX="323.0" layoutY="126.0" prefHeight="20.0" prefWidth="97.0" style="-fx-text-fill: black;" stylesheets="@../../Styles/style.css" text="Event Date :">
+                              <Label layoutX="323.0" layoutY="140.0" prefHeight="20.0" prefWidth="97.0" style="-fx-text-fill: black;" stylesheets="@../../Styles/style.css" text="Event Date :">
                                  <font>
                                     <Font name="Segoe UI Semibold" size="14.0" />
                                  </font>
                               </Label>
-                              <DatePicker fx:id="eventDatePicker" layoutX="325.0" layoutY="155.0" prefHeight="25.0" prefWidth="242.0" promptText="When is the event" />
+                              <DatePicker fx:id="eventDatePicker" layoutX="325.0" layoutY="167.0" prefHeight="25.0" prefWidth="242.0" promptText="When is the event" />
                               <Button fx:id="registerEventBtn" layoutX="336.0" layoutY="225.0" mnemonicParsing="false" onAction="#onRegisterEvent" prefHeight="32.0" prefWidth="219.0" stylesheets="@../../Styles/style.css" text="Register Event" textFill="WHITE">
                                  <font>
                                     <Font name="Segoe UI Semibold" size="18.0" />

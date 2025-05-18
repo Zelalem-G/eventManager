@@ -36,9 +36,6 @@ public class LoginController {
 
     @FXML
     public void onLogin(ActionEvent event) throws IOException {
-        // Assuming you have TextFields for username and password with fx:id set in FXML
-//        String username = ((javafx.scene.control.TextField) ((Node) event.getSource()).getScene().lookup("#usernameField")).getText();
-//        String password = ((javafx.scene.control.PasswordField) ((Node) event.getSource()).getScene().lookup("#passwordField")).getText();
           String username = usernameTextfield.getText();
           String password = passwordTextfield.getText();
 
