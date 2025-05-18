@@ -46,21 +46,34 @@ public class RegisterController {
 
     @FXML
     private void handleRegistration() {
-        // Validate the fields
         if (isAnyFieldEmpty()) {
             showError("All fields must be filled in!");
             return;
         }
 
-        // Retrieve values from the form
         String phoneNumber = phoneNumberField.getText();
         String email = emailField.getText();
         String gender = genderComboBox.getValue();
         String institution = institutionField.getText();
         int age;
 
+        // Validate formats
+        if (!phoneNumber.matches("^(?:\\+251|0)(7\\d{8}|9\\d{8})$")) {
+            showError("Invalid phone number! Use format: 07XXXXXXXX, 09XXXXXXXX, +2519XXXXXXXX,or +2517XXXXXXXX");
+            return;
+        }
+
+        if (!email.matches("^[\\w.-]+@[\\w.-]+\\.[a-zA-Z]{2,}$")) {
+            showError("Invalid email address format!");
+            return;
+        }
+
         try {
             age = Integer.parseInt(ageField.getText());
+            if(age < 1){
+                showError("Age must be a valid number!");
+                return;
+            }
         } catch (NumberFormatException e) {
             showError("Age must be a valid number!");
             return;
@@ -133,12 +146,6 @@ public class RegisterController {
         statusText.setFill(Color.web("#FF4C4C"));
 //        statusText.setStyle("-fx-text-fill: red;");
 
-        // Show alert dialog
-        Alert alert = new Alert(AlertType.ERROR);
-        alert.setTitle("Error");
-        alert.setHeaderText("Registration Failed");
-        alert.setContentText(message);
-        alert.showAndWait();
     }
 
     private void showSuccess(String message) {

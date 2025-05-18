@@ -50,7 +50,6 @@ public class UsersViewController implements Initializable {
 
             ResultSet rs = stmt.executeQuery();
             while (rs.next()) {
-                System.out.println("loop bigins");
                 User user = new User(
                         rs.getInt("user_id"),
                         rs.getString("username"),
@@ -58,9 +57,7 @@ public class UsersViewController implements Initializable {
                         rs.getString("email"),
                         rs.getString("role")
                 );
-                System.out.println("b");
                 users.add(user);
-                System.out.println("a");
             }
         } catch (SQLException e) {
             System.out.println("Exception");

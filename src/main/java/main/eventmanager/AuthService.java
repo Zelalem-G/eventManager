@@ -77,11 +77,10 @@ public class AuthService {
                 return LoginResult.WRONG_PASSWORD;
             }
 
-//            int id = rs.getInt("user_id");
             String role = rs.getString("role");
 
             Session.setSession(username, role);
-//            (setUserIDToSession(username)) ? return LoginResult.SUCCESS : return LoginResult.ERROR;
+
             if(setUserIDToSession(username)){
                 return LoginResult.SUCCESS;
             }

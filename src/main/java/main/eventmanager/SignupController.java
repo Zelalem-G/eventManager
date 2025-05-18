@@ -33,15 +33,13 @@ public class SignupController {
     private RadioButton userRadioBtn;
     @FXML
     private RadioButton adminRadioBtn;
+    @FXML
+    private TextField adminCodeTextField;
 
-    public String selectedRole() {
-        String selectedRole = "";
-        if (adminRadioBtn.isSelected()) {
-            selectedRole = "admin";
-        } else if (userRadioBtn.isSelected()) {
-            selectedRole = "user";
-        }
-        return selectedRole;
+
+    public void onRoleSelected() {
+        boolean isAdmin = adminRadioBtn.isSelected();
+        adminCodeTextField.setVisible(isAdmin);
     }
 
     public void onSignup(ActionEvent event) throws IOException {
@@ -54,6 +52,24 @@ public class SignupController {
         if (username.isEmpty() || password.isEmpty() || email.isEmpty() || fullName.isEmpty() || role == null) {
             errorMessageLabel.setText("Please fill in all fields.");
             return;
+        }
+        if (!email.matches("^[\\w.-]+@[\\w.-]+\\.[a-zA-Z]{2,}$")) {
+            errorMessageLabel.setText("Invalid email address format!");
+            return;
+        }
+        if(password.length() < 8 || password.length() > 16){
+            errorMessageLabel.setText("Password must be between 8 and 16 character");
+            return;
+        }
+
+        if (role.equals("admin")) {
+            String enteredCode = adminCodeTextField.getText().trim();
+            final String ADMIN_SECRET = "ABC123";
+
+            if (!enteredCode.equals(ADMIN_SECRET)) {
+                errorMessageLabel.setText("Invalid admin verification code.");
+                return;
+            }
         }
 
         AuthService.SignupResult result = AuthService.registerUser(username, password, email , fullName, role);
@@ -77,12 +93,21 @@ public class SignupController {
     }
 
     public void onLogin(ActionEvent event) throws IOException {
-//        errorMessageLabel.setText("Login button clicked");
         root = FXMLLoader.load(Objects.requireNonNull(getClass().getResource("login.fxml")));
         stage = (Stage) ((Node)event.getSource()).getScene().getWindow();
         scene = new Scene(root);
 
         stage.setScene(scene);
         stage.show();
+    }
+
+    public String selectedRole() {
+        String selectedRole = "";
+        if (adminRadioBtn.isSelected()) {
+            selectedRole = "admin";
+        } else if (userRadioBtn.isSelected()) {
+            selectedRole = "user";
+        }
+        return selectedRole;
     }
 }

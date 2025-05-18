@@ -15,7 +15,7 @@ public class User {
         this.role = role;
     }
 
-    // Getters and setters
+    // Getters
     public int getUserId() { return userId; }
     public String getUsername() { return username; }
     public String getFullName() { return fullName; }

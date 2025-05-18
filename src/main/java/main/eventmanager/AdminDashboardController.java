@@ -41,6 +41,7 @@ public class AdminDashboardController implements Initializable {
     public void initialize(URL url, ResourceBundle rb) {
         menuHelper = new MenuControllerHelper(welcomeLabel, adminEventBtn, adminOpsBtn, aboutMenuItem, browseEventsMenuItem, myRegisteredMenuItem);
         menuHelper.initializeMenu(Session.getUsername(), Session.getRole());
+        loadView("statistics.fxml");
     }
 
     @FXML
@@ -72,7 +73,7 @@ public class AdminDashboardController implements Initializable {
 
     private void loadView(String fxmlPath) {
         try {
-            Node view = FXMLLoader.load(getClass().getResource(fxmlPath));
+            Node view = FXMLLoader.load(getClass().getResource(fxmlPath));    // node not parent
             contentArea.getChildren().setAll(view);
         } catch (IOException e) {
             e.printStackTrace();
