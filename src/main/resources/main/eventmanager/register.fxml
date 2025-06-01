@@ -25,10 +25,10 @@
 
       <!-- Registration form -->
       <VBox alignment="CENTER" prefWidth="500.0" spacing="15" style="-fx-padding: 30;">
-         <TextField fx:id="phoneNumberField" promptText="Phone Number" style="-fx-background-radius: 8; -fx-padding: 8;" />
-         <TextField fx:id="emailField" promptText="Email" style="-fx-background-radius: 8; -fx-padding: 8;" />
-         <TextField fx:id="institutionField" promptText="Institution" style="-fx-background-radius: 8; -fx-padding: 8;" />
-         <TextField fx:id="ageField" promptText="Age" style="-fx-background-radius: 8; -fx-padding: 8;" />
+         <TextField fx:id="phoneNumberField" maxWidth="500.0" promptText="Phone Number" style="-fx-background-radius: 8; -fx-padding: 8;" />
+         <TextField fx:id="emailField" maxWidth="500.0" promptText="Email" style="-fx-background-radius: 8; -fx-padding: 8;" />
+         <TextField fx:id="institutionField" maxWidth="500.0" promptText="Institution" style="-fx-background-radius: 8; -fx-padding: 8;" />
+         <TextField fx:id="ageField" maxWidth="500.0" promptText="Age" style="-fx-background-radius: 8; -fx-padding: 8;" />
 
          <!-- Gender selection -->
          <HBox alignment="CENTER" spacing="10">

@@ -15,8 +15,6 @@ public class Application extends javafx.application.Application {
         Parent root = FXMLLoader.load(Objects.requireNonNull(getClass().getResource("login.fxml")));
         Scene scene = new Scene(root, 600 , 400);
 
-//        Image icon = new Image("images/logo-favicon.png");
-//        stage.getIcons().add(icon);
 
         stage.setTitle("Eventify!");
         stage.setScene(scene);

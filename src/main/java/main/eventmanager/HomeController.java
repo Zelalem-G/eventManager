@@ -55,13 +55,6 @@ public class HomeController implements Initializable {
 
     @FXML
     private MenuItem aboutMenuItem;
-//
-//    @FXML
-//    private VBox mainVBox; // fx:id of your VBox in FXML
-//
-//    @FXML
-//    private StackPane stackPane;
-
 
     private MenuControllerHelper menuHelper;
 
@@ -87,7 +80,6 @@ public class HomeController implements Initializable {
             manageEventCardBtn.setVisible(false);
             manageEventCardBtn.setManaged(false);
         }
-//        styleCardButtons();
 
     }
 
